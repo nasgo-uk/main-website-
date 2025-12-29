@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Registrations: Public allow write (create only) for forms
+    match /registrations/{document=**} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+    
+    // Default: Secure everything else
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

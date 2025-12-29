@@ -1,0 +1,206 @@
+companies
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nasgo Demo Booking</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: "#006D77", // Teal
+                        secondary: "#264653", // Navy
+                        accent: "#E76F51", // Coral
+                        success: "#2A9D8F", // Green
+                        "background-light": "#F8FAFC", // Light slate
+                        "background-dark": "#0F172A", // Dark slate
+                    },
+                    animation: {
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out 0.3s forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-40px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 0 0 rgba(231, 111, 81, 0.4)' },
+                            '50%': { boxShadow: '0 0 0 15px rgba(231, 111, 81, 0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                },
+            },
+        };
+    </script>
+    <style>
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #4d8c93 inset !important;
+            -webkit-text-fill-color: white !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .glass-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-sans text-slate-800 dark:text-slate-100 min-h-screen flex items-center justify-center p-4 lg:p-8 transition-colors duration-300">
+    <div
+        class="w-full max-w-[1200px] mx-auto bg-gradient-to-br from-[#1A8993] to-primary rounded-[3rem] shadow-2xl overflow-hidden relative">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float">
+        </div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-float"
+            style="animation-delay: 1s;"></div>
+        <div
+            class="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 md:p-12 lg:p-20 gap-12 lg:gap-20">
+            <div class="w-full lg:w-1/2 flex flex-col justify-center space-y-8">
+                <h1
+                    class="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight opacity-0 animate-slide-in-left">
+                    Ready to Modernize <br />Your Operations?
+                </h1>
+                <p class="text-lg lg:text-xl text-teal-50/90 leading-relaxed max-w-lg opacity-0 animate-fade-in">
+                    See how Nasgo can help you scale your service business with intelligent fleet management and
+                    real-time business intelligence.
+                </p>
+                <ul class="space-y-5 mt-4">
+                    <li class="flex items-center space-x-4 opacity-0 animate-slide-up" style="animation-delay: 0.5s;">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-sm">
+                            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3"></path>
+                            </svg>
+                        </div>
+                        <span class="text-white font-medium text-lg">30-minute personalized walkthrough</span>
+                    </li>
+                    <li class="flex items-center space-x-4 opacity-0 animate-slide-up" style="animation-delay: 0.7s;">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-sm">
+                            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3"></path>
+                            </svg>
+                        </div>
+                        <span class="text-white font-medium text-lg">Custom ROI projection</span>
+                    </li>
+                    <li class="flex items-center space-x-4 opacity-0 animate-slide-up" style="animation-delay: 0.9s;">
+                        <div
+                            class="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-sm">
+                            <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3"></path>
+                            </svg>
+                        </div>
+                        <span class="text-white font-medium text-lg">Dedicated onboarding support</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="w-full lg:w-5/12 opacity-0 animate-fade-in" style="animation-delay: 0.4s;">
+                <div class="glass-panel p-8 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none">
+                    </div>
+                    <form class="space-y-6 relative z-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div class="relative group">
+                                <input
+                                    class="block px-4 pb-2.5 pt-5 w-full text-white bg-slate-800/40 dark:bg-slate-900/40 border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer rounded-t-lg transition-colors placeholder-transparent"
+                                    id="company" placeholder=" " type="text" />
+                                <label
+                                    class="absolute text-sm text-gray-300 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-teal-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                                    for="company">
+                                    Company Name
+                                </label>
+                            </div>
+                            <div class="relative group">
+                                <select
+                                    class="block px-4 pb-2.5 pt-5 w-full text-white bg-slate-800/40 dark:bg-slate-900/40 border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer rounded-t-lg cursor-pointer"
+                                    id="fleet">
+                                    <option class="text-gray-900 bg-white" selected="" value="1-10">1-10 techs</option>
+                                    <option class="text-gray-900 bg-white" value="11-50">11-50 techs</option>
+                                    <option class="text-gray-900 bg-white" value="51-200">51-200 techs</option>
+                                    <option class="text-gray-900 bg-white" value="200+">200+ techs</option>
+                                </select>
+                                <label
+                                    class="absolute text-sm text-gray-300 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-teal-200 peer-focus:scale-75 peer-focus:-translate-y-4"
+                                    for="fleet">
+                                    Fleet Size
+                                </label>
+                                <div
+                                    class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-white/70 group-hover:text-white transition-colors">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative group">
+                            <input
+                                class="block px-4 pb-2.5 pt-5 w-full text-white bg-slate-800/40 dark:bg-slate-900/40 border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer rounded-t-lg transition-colors placeholder-transparent"
+                                id="email" placeholder=" " type="email" />
+                            <label
+                                class="absolute text-sm text-gray-300 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-teal-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                                for="email">
+                                Your Email
+                            </label>
+                        </div>
+                        <button
+                            class="w-full py-4 px-6 bg-accent hover:bg-[#d66042] text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform active:scale-[0.98] transition-all duration-200 text-lg tracking-wide animate-pulse-glow mt-4"
+                            type="button">
+                            Book My Demo
+                        </button>
+                        <p class="text-xs text-center text-teal-100/60 mt-4">
+                            By submitting, you agree to our Terms and Privacy Policy.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

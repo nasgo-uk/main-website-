@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F8F9FA;
+  --foreground: #264653;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-inter: var(--font-inter);
+  --font-poppins: var(--font-poppins);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+  scroll-behavior: smooth;
+  transition: font-size 0.3s ease, background-color 0.3s ease, filter 0.3s ease;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #264653 0%, #006D77 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-nasgo-gradient {
+  background: linear-gradient(135deg, #006D77 0%, #264653 100%);
+}
+
+.bg-coral-gradient {
+  background: linear-gradient(135deg, #E76F51 0%, #f08064 100%);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Keyboard Focus Indicator for Accessibility */
+*:focus-visible {
+  outline: 3px solid #E76F51 !important;
+  outline-offset: 2px !important;
+}
+
+/* --- ACCESSIBILITY STATES --- */
+
+/* 1. Large Text */
+body.acc-large-text {
+  font-size: 1.18rem !important;
+}
+
+body.acc-large-text p {
+  font-size: 1.15rem !important;
+}
+
+body.acc-large-text h1 {
+  font-size: 1.25em !important;
+}
+
+body.acc-large-text h2 {
+  font-size: 1.2em !important;
+}
+
+body.acc-large-text .text-xs {
+  font-size: 0.9rem !important;
+}
+
+body.acc-large-text .text-sm {
+  font-size: 1rem !important;
+}
+
+/* 2. High Contrast (Proper Implementation) */
+body.acc-high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.acc-high-contrast section,
+body.acc-high-contrast footer,
+body.acc-high-contrast main {
+  background-color: #000 !important;
+}
+
+body.acc-high-contrast .glass,
+body.acc-high-contrast .bg-white,
+body.acc-high-contrast .bg-gray-50,
+body.acc-high-contrast .bg-gray-100 {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+body.acc-high-contrast p,
+body.acc-high-contrast span,
+body.acc-high-contrast li {
+  color: #fff !important;
+}
+
+body.acc-high-contrast .text-\[\#264653\],
+body.acc-high-contrast .text-gray-500,
+body.acc-high-contrast .text-gray-400 {
+  color: #fff !important;
+}
+
+body.acc-high-contrast .bg-\[\#006D77\],
+body.acc-high-contrast .bg-\[\#264653\] {
+  border: 2px solid #fff !important;
+}
+
+body.acc-high-contrast .text-gradient {
+  -webkit-text-fill-color: #fff !important;
+}
+
+body.acc-high-contrast .bg-\[\#E76F51\],
+body.acc-high-contrast .bg-coral-gradient {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* 3. Underline Links */
+body.acc-underline-links a,
+body.acc-underline-links button:not(.bg-\[\#E76F51\]) {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+}
+
+body.acc-underline-links .bg-\[\#E76F51\] {
+  border: 2px solid currentColor !important;
+}
+
+/* 4. Greyscale */
+body.acc-greyscale {
+  filter: grayscale(1) !important;
+}
