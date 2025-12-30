@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Mail,
     Phone,
@@ -58,21 +58,21 @@ const ContactHero = ({ onScrollTo }: { onScrollTo: (tab: any) => void }) => (
     <section className="relative min-h-[50vh] flex items-center justify-center bg-nasgo-gradient text-white overflow-hidden py-24 px-6 text-center">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-white" />
         <div className="max-w-4xl mx-auto relative z-10">
-            <motion.h1
+            <m.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-5xl md:text-7xl font-extrabold mb-8"
             >
                 We're Here to Help
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto"
             >
                 Have questions? Need support? Want to partner? We'd love to hear from you.
-            </motion.p>
+            </m.p>
 
             <div className="flex flex-wrap justify-center gap-4">
                 {[
@@ -81,7 +81,7 @@ const ContactHero = ({ onScrollTo }: { onScrollTo: (tab: any) => void }) => (
                     { label: "I'm a Company", icon: <Building2 size={18} />, tab: 'company' },
                     { label: "General Inquiry", icon: <HelpCircle size={18} />, tab: 'general' }
                 ].map((btn, i) => (
-                    <motion.button
+                    <m.button
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ const ContactHero = ({ onScrollTo }: { onScrollTo: (tab: any) => void }) => (
                     >
                         {btn.icon}
                         {btn.label}
-                    </motion.button>
+                    </m.button>
                 ))}
             </div>
         </div>
@@ -112,7 +112,7 @@ const QuickContactOptions = () => {
                 <h2 className="text-3xl font-extrabold text-center mb-16">Choose How to Reach Us</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {options.map((opt, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             whileHover={{ y: -5 }}
                             className="glass p-8 rounded-[2.5rem] border-gray-100 shadow-xl flex flex-col items-center text-center cursor-pointer group"
@@ -137,7 +137,7 @@ const QuickContactOptions = () => {
                                     <Instagram size={16} className="text-gray-400 hover:text-[#E4405F]" />
                                 </div>
                             )}
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -169,9 +169,9 @@ const ContactFAQ = () => {
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
-                                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
+                                    <m.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                                         <div className="p-8 pt-0 text-gray-500 text-lg leading-relaxed border-t border-gray-100/50">{faq.a}</div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
                         </div>

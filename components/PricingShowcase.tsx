@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Cpu, TrendingUp, Search, Info, Check } from 'lucide-react';
 
 const PricingShowcase: React.FC = () => {
@@ -37,14 +37,15 @@ const PricingShowcase: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div>
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             className="inline-flex items-center gap-2 bg-[#006D77] px-4 py-2 rounded-full text-sm font-bold tracking-widest mb-6"
           >
             <Cpu size={16} />
             POWERED BY AI
-          </motion.div>
+          </m.div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
             Transparent Pricing,<br />
             <span className="text-[#E76F51]">Powered by Intelligence</span>
@@ -77,9 +78,10 @@ const PricingShowcase: React.FC = () => {
         </div>
 
         <div className="relative">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             className="bg-white p-8 rounded-[3rem] shadow-2xl relative overflow-hidden text-[#0f172a]"
           >
             <div className="flex justify-between items-center mb-8">
@@ -103,7 +105,7 @@ const PricingShowcase: React.FC = () => {
             <div className="bg-[#F8F9FA] rounded-2xl p-6 min-h-[200px] flex flex-col items-center justify-center border border-gray-100 shadow-inner">
               <AnimatePresence mode="wait">
                 {isAnalyzing ? (
-                  <motion.div
+                  <m.div
                     key="analyzing"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -111,35 +113,36 @@ const PricingShowcase: React.FC = () => {
                     className="flex flex-col items-center gap-4"
                   >
                     <div className="relative w-16 h-16">
-                      <motion.div
+                      <m.div
                         animate={{ rotate: 360 }}
                         transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                         className="w-full h-full border-4 border-[#006D77] border-t-transparent rounded-full"
+                        style={{ willChange: 'transform' }}
                       />
                       <Cpu className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#006D77]" />
                     </div>
                     <p className="font-mono text-[#006D77] animate-pulse">Analyzing market trends...</p>
-                  </motion.div>
+                  </m.div>
                 ) : (
-                  <motion.div
+                  <m.div
                     key="result"
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center"
                   >
                     <div className="text-xs font-bold text-gray-400 uppercase mb-2">Suggested Price Range</div>
-                    <motion.div
+                    <m.div
                       className="text-6xl font-extrabold mb-4 text-[#0f172a]"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                     >
                       £{price} - £{Math.round(price * 1.3)}
-                    </motion.div>
+                    </m.div>
                     <div className="text-sm bg-green-500/10 text-green-400 px-4 py-1.5 rounded-full inline-flex items-center gap-1.5">
                       <Check size={14} className="text-green-400" />
                       Fair Market Value Confirmed
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -154,14 +157,15 @@ const PricingShowcase: React.FC = () => {
                 <span className="font-bold text-[#0f172a]">1.5 - 2 Hours</span>
               </div>
               <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                <motion.div
+                <m.div
                   animate={{ x: ['-100%', '100%'] }}
                   transition={{ duration: 3, repeat: Infinity }}
                   className="w-1/2 h-full bg-[#006D77]"
+                  style={{ willChange: 'transform' }}
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

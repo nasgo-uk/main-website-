@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     ArrowDown,
     Brain,
@@ -55,14 +55,14 @@ const AboutHero = () => (
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10 flex flex-col items-center justify-center h-full">
-            <motion.div
+            <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-widest uppercase mb-8"
             >
                 ABOUT NASGO
-            </motion.div>
-            <motion.h1
+            </m.div>
+            <m.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
@@ -70,8 +70,8 @@ const AboutHero = () => (
             >
                 Transforming Home Services <br />
                 <span className="text-white/80">with Intelligence</span>
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
@@ -80,10 +80,10 @@ const AboutHero = () => (
                 We believe getting home services should be transparent, fair, and effortless.
                 That's why we're building an AI-powered platform that connects people with the
                 right professionals at the right price.
-            </motion.p>
+            </m.p>
         </div>
 
-        <motion.div
+        <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, y: [0, 10, 0] }}
             transition={{ delay: 1, duration: 2, repeat: Infinity }}
@@ -91,34 +91,34 @@ const AboutHero = () => (
         >
             <span className="text-sm font-bold uppercase tracking-widest">Scroll to learn our story</span>
             <ArrowDown size={24} />
-        </motion.div>
+        </m.div>
     </section>
 );
 
 const TheProblemStory = () => (
     <section className="py-24 bg-white px-6">
         <div className="max-w-3xl mx-auto text-center">
-            <motion.h2
+            <m.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 className="text-4xl font-extrabold mb-12 text-[#264653]"
             >
                 Why We Built Nasgo
-            </motion.h2>
+            </m.h2>
 
             <div className="space-y-12 text-lg md:text-xl text-gray-500 leading-relaxed text-left">
-                <motion.p
+                <m.p
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
                     The home services industry hasn't changed in decades. It's still built on phone calls,
                     unclear pricing, and hoping you find someone trustworthy.
-                </motion.p>
+                </m.p>
 
                 <div className="grid grid-cols-1 gap-8">
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -130,9 +130,9 @@ const TheProblemStory = () => (
                             Who's right? Who's reliable? You have no idea."
                         </p>
                         <div className="mt-4 font-bold text-[#006D77] text-sm uppercase">— THE CUSTOMER'S STRUGGLE</div>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -144,9 +144,9 @@ const TheProblemStory = () => (
                             chasing work instead of doing it."
                         </p>
                         <div className="mt-4 font-bold text-[#E76F51] text-sm uppercase">— THE PROVIDER'S REALITY</div>
-                    </motion.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -158,10 +158,10 @@ const TheProblemStory = () => (
                             customers are happy until it's too late."
                         </p>
                         <div className="mt-4 font-bold text-[#264653] text-sm uppercase">— THE COMPANY'S CHAOS</div>
-                    </motion.div>
+                    </m.div>
                 </div>
 
-                <motion.p
+                <m.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
@@ -169,7 +169,7 @@ const TheProblemStory = () => (
                 >
                     We knew there had to be a better way. <br />
                     <span className="text-[#006D77]">So we built it.</span>
-                </motion.p>
+                </m.p>
             </div>
         </div>
     </section>
@@ -207,7 +207,7 @@ const TheSolutionOverview = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {cards.map((card, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -223,7 +223,7 @@ const TheSolutionOverview = () => {
                             <div className="pt-6 border-t border-gray-100 font-bold text-[#006D77] text-sm uppercase">
                                 {card.impact}
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -242,7 +242,7 @@ const TechnologyDeepDive = () => {
                 <div className="relative w-full h-full flex items-center justify-center p-8">
                     <div className="w-full h-48 flex items-end justify-between gap-2">
                         {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
-                            <motion.div
+                            <m.div
                                 key={i}
                                 initial={{ height: 0 }}
                                 whileInView={{ height: `${h}%` }}
@@ -254,11 +254,11 @@ const TechnologyDeepDive = () => {
                                 </div>
                                 {i === 5 && <div className="absolute inset-0 bg-[#00df9a]/50 blur-lg" />}
                                 {i === 5 && <div className="absolute inset-0 bg-[#00df9a]" />}
-                            </motion.div>
+                            </m.div>
                         ))}
                     </div>
                     {/* Floating Badge */}
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8 }}
@@ -271,7 +271,7 @@ const TechnologyDeepDive = () => {
                             <div className="text-[10px] uppercase tracking-widest text-white/50 font-bold">Market Rate</div>
                             <div className="text-xl font-bold text-white">£145.00</div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             )
         },
@@ -290,7 +290,7 @@ const TechnologyDeepDive = () => {
 
                     {/* Nodes */}
                     {[0, 1, 2, 3].map((i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             initial={{ scale: 0, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
@@ -316,7 +316,7 @@ const TechnologyDeepDive = () => {
                                     {i === 0 ? 'Top Rated' : i === 1 ? 'Nearby' : i === 2 ? 'Expert' : 'Available'}
                                 </div>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             )
@@ -337,21 +337,21 @@ const TechnologyDeepDive = () => {
                         </div>
 
                         {/* Scanning Effect */}
-                        <motion.div
+                        <m.div
                             animate={{ top: ['0%', '100%', '0%'] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                             className="absolute left-0 right-0 h-1 bg-[#00df9a] shadow-[0_0_20px_#00df9a] z-10"
                         />
 
                         {/* Overlay Icons */}
-                        <motion.div
+                        <m.div
                             initial={{ scale: 0 }}
                             whileInView={{ scale: 1 }}
                             transition={{ delay: 0.5 }}
                             className="absolute top-4 right-4 w-8 h-8 bg-[#00df9a] rounded-full flex items-center justify-center shadow-lg"
                         >
                             <Check size={16} className="text-black font-bold" strokeWidth={3} />
-                        </motion.div>
+                        </m.div>
 
                         <div className="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md p-3 rounded-xl border border-white/10">
                             <div className="flex justify-between items-center text-xs">
@@ -394,12 +394,12 @@ const TechnologyDeepDive = () => {
                         {/* Map Area */}
                         <div className="flex-1 bg-white/5 rounded-xl border border-white/5 relative overflow-hidden">
                             {/* Mock Map Points */}
-                            <motion.div
+                            <m.div
                                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                                 className="absolute top-1/3 left-1/3 w-3 h-3 bg-[#E76F51] rounded-full shadow-[0_0_10px_#E76F51]"
                             />
-                            <motion.div
+                            <m.div
                                 animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
                                 transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                                 className="absolute top-2/3 right-1/4 w-3 h-3 bg-[#00df9a] rounded-full shadow-[0_0_10px_#00df9a]"
@@ -419,7 +419,7 @@ const TechnologyDeepDive = () => {
                 <div className="space-y-32">
                     {techs.map((tech, i) => (
                         <div key={i} className={`flex flex-col lg:flex-row gap-16 items-center ${tech.align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, x: tech.align === 'left' ? -50 : 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -434,9 +434,9 @@ const TechnologyDeepDive = () => {
                                     <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs font-bold uppercase tracking-widest text-[#006D77]">Proprietary Algorithm</div>
                                     <div className="px-4 py-2 bg-white/5 rounded-lg border border-white/10 text-xs font-bold uppercase tracking-widest text-[#E76F51]">Live Data Feed</div>
                                 </div>
-                            </motion.div>
+                            </m.div>
 
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
@@ -444,7 +444,7 @@ const TechnologyDeepDive = () => {
                             >
                                 <div className="absolute inset-0 bg-nasgo-gradient opacity-10" />
                                 {tech.visual}
-                            </motion.div>
+                            </m.div>
                         </div>
                     ))}
                 </div>
@@ -478,7 +478,7 @@ const OurVision = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {goals.map((goal, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             whileHover={{ y: -10 }}
                             className="p-8 bg-gray-50 rounded-[2.5rem] border border-gray-100 flex flex-col items-center"
@@ -488,7 +488,7 @@ const OurVision = () => {
                             </div>
                             <h4 className="text-lg font-bold mb-4">{goal.title}</h4>
                             <p className="text-sm text-gray-500">{goal.desc}</p>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -514,7 +514,7 @@ const WhyJoinNow = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {benefits.map((b, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -526,7 +526,7 @@ const WhyJoinNow = () => {
                             <div className="font-bold text-[#E76F51] text-xs uppercase tracking-tighter bg-[#E76F51]/5 px-4 py-2 rounded-lg w-fit">
                                 {b.benefit}
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
 
@@ -678,7 +678,7 @@ const AboutFAQ = () => {
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -687,7 +687,7 @@ const AboutFAQ = () => {
                                         <div className="p-8 pt-0 text-gray-500 text-lg leading-relaxed border-t border-gray-50">
                                             {faq.a}
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
                         </div>

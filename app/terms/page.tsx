@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const TermsPage: React.FC = () => {
     const sections = [
@@ -29,13 +29,13 @@ const TermsPage: React.FC = () => {
         <div className="pt-32 pb-24 px-6 bg-[#F8F9FA]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-20">
-                    <motion.h1
+                    <m.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-6xl font-extrabold text-[#264653] mb-6"
                     >
                         Terms of Service
-                    </motion.h1>
+                    </m.h1>
                     <p className="text-gray-500 font-medium">Last Updated: October 15, 2025</p>
                     <div className="mt-8 max-w-2xl mx-auto p-6 bg-[#E76F51]/5 rounded-2xl border border-[#E76F51]/10 text-[#E76F51] font-medium leading-relaxed">
                         By accessing or using Nasgo, you agree to be bound by these terms. Please read them carefully to understand your rights and obligations.

@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { USER_CARDS } from '../lib/constants';
 
 const UserTypes: React.FC = () => {
@@ -10,20 +10,20 @@ const UserTypes: React.FC = () => {
     <section id="for-providers" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-extrabold mb-6"
           >
             Everyone Wins with Nasgo
-          </motion.h2>
+          </m.h2>
           <p className="text-xl text-gray-500">Whether you're looking for help or looking to work, we've got you covered.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {USER_CARDS.map((card, i) => (
-            <motion.div
+            <m.div
               key={card.type}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ const UserTypes: React.FC = () => {
                 }`}>
                 {card.cta}
               </button>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

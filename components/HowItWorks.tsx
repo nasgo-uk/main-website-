@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { STEPS } from '../lib/constants';
 
 const HowItWorks: React.FC = () => {
@@ -10,14 +10,14 @@ const HowItWorks: React.FC = () => {
     <section id="how-it-works" className="py-24 bg-[#F8F9FA] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-extrabold mb-6"
           >
             How it Works
-          </motion.h2>
+          </m.h2>
           <p className="text-xl text-gray-500">From request to completion in three simple steps.</p>
         </div>
 
@@ -26,7 +26,7 @@ const HowItWorks: React.FC = () => {
           <div className="hidden md:block absolute top-1/3 left-1/4 right-1/4 h-0.5 border-t-2 border-dashed border-[#006D77]/20 -z-10" />
 
           {STEPS.map((step, i) => (
-            <motion.div
+            <m.div
               key={step.number}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const HowItWorks: React.FC = () => {
               <p className="text-gray-500 leading-relaxed">
                 {step.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

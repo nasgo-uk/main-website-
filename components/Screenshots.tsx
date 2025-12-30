@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Check, ChevronLeft, Brush, Hammer, Laptop, Car, Flower2, Sprout, Briefcase, Signal, Wifi, Battery, Bell, Settings, Power, Star, Coins, MapPin, Home, Plus, Banknote, TrendingUp, Activity, Users, LayoutGrid, Map as MapIcon, MessageSquare, Box, Wallet } from 'lucide-react';
 
 const Screenshots: React.FC = () => {
@@ -18,14 +18,14 @@ const Screenshots: React.FC = () => {
     <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-extrabold mb-6"
           >
             Experience Nasgo
-          </motion.h2>
+          </m.h2>
 
           <div className="flex justify-center mt-8">
             <div className="inline-flex items-center p-1.5 rounded-full glass shadow-xl border border-white/20 bg-white/5 backdrop-blur-lg">
@@ -39,7 +39,7 @@ const Screenshots: React.FC = () => {
                     }`}
                 >
                   {activeTab === tab.name && (
-                    <motion.div
+                    <m.div
                       layoutId="activeTab"
                       className="absolute inset-0 rounded-full -z-10 shadow-sm"
                       style={{ backgroundColor: tab.color }}
@@ -54,7 +54,7 @@ const Screenshots: React.FC = () => {
 
         <div className="relative flex justify-center items-center py-20">
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key={activeTab}
               initial={{ opacity: 0, scale: 0.9, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -345,7 +345,7 @@ const Screenshots: React.FC = () => {
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#006D77] rounded-full blur-[80px] -z-10 opacity-30" />
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
       </div>

@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { createPortal } from 'react-dom';
 import { ContactForm } from './ContactForm';
@@ -65,11 +66,16 @@ const Navbar: React.FC = () => {
               className="flex items-center gap-2 cursor-pointer"
               onClick={handleNavClick}
             >
-              <img
-                src={logoSrc}
-                alt="Nasgo Logo"
-                className="h-10 w-auto object-contain"
-              />
+              <div className="relative h-10 w-10">
+                <Image
+                  src={logoSrc}
+                  alt="Nasgo Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  sizes="40px"
+                />
+              </div>
               <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[#086A74] to-[#0A808C] bg-clip-text text-transparent">Nasgo</span>
             </Link>
 
@@ -116,7 +122,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -145,7 +151,7 @@ const Navbar: React.FC = () => {
                   Get Early Access
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </header>
@@ -155,14 +161,14 @@ const Navbar: React.FC = () => {
         <AnimatePresence>
           {isContactOpen && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsContactOpen(false)}
                 className="absolute inset-0 bg-black/60 backdrop-blur-md"
               />
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -177,7 +183,7 @@ const Navbar: React.FC = () => {
                 <div onClick={(e) => e.stopPropagation()}>
                   <ContactForm />
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           )}
         </AnimatePresence>,

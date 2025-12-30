@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, Check, MapPin, Loader2 } from 'lucide-react';
 import CustomDropdown from './CustomDropdown';
+import SuccessMessage from './SuccessMessage';
 import { saveRegistration } from '../lib/db';
+import { useCSRF } from '../hooks/useCSRF';
 
 interface WaitlistModalProps {
     isOpen: boolean;
@@ -12,12 +14,14 @@ interface WaitlistModalProps {
 }
 
 const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
+    const csrfToken = useCSRF();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         city: '',
-        serviceInterest: ''
+        serviceInterest: '',
+        bot_check: '' // Honeypot state
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -34,7 +38,6 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
         "Moving",
         "Other"
     ];
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
@@ -48,8 +51,9 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
             metadata: {
                 city: formData.city,
                 serviceInterest: formData.serviceInterest
-            }
-        });
+            },
+            bot_check: formData.bot_check
+        }, csrfToken);
 
         if (result.success) {
             setIsSubmitting(false);
@@ -57,7 +61,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
             setTimeout(() => {
                 setIsSuccess(false);
                 onClose();
-                setFormData({ name: '', email: '', phone: '', city: '', serviceInterest: '' });
+                setFormData({ name: '', email: '', phone: '', city: '', serviceInterest: '', bot_check: '' });
             }, 3000);
         } else {
             console.error("Submission failed", result.error);
@@ -70,7 +74,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
         <AnimatePresence>
             {isOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -78,7 +82,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                     />
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -99,13 +103,10 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
 
                         <div className="p-8">
                             {isSuccess ? (
-                                <div className="flex flex-col items-center justify-center py-12 text-center">
-                                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
-                                        <Check size={40} strokeWidth={3} />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-[#264653] mb-2">You're on the list!</h3>
-                                    <p className="text-gray-500">We'll reach out as soon as we launch in {formData.city || 'your city'}.</p>
-                                </div>
+                                <SuccessMessage
+                                    title="You're on the list!"
+                                    message={`We'll reach out as soon as we launch in ${formData.city || 'your city'}.`}
+                                />
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-4">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -193,7 +194,7 @@ const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose }) => {
                                 </form>
                             )}
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             )}
         </AnimatePresence>

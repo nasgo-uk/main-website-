@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Mail,
     Phone,
@@ -24,9 +24,12 @@ import {
     ArrowRight
 } from 'lucide-react';
 import CustomDropdown from './CustomDropdown';
+import SuccessMessage from './SuccessMessage';
+import { useCSRF } from '../hooks/useCSRF';
 import { saveRegistration } from '../lib/db';
 
 export const ContactForm: React.FC = () => {
+    const csrfToken = useCSRF();
     const [activeTab, setActiveTab] = useState<'customer' | 'provider' | 'company' | 'general'>('customer');
     const [submitted, setSubmitted] = useState(false);
     const [fleetSize, setFleetSize] = useState('1-10 employees');
@@ -43,13 +46,14 @@ export const ContactForm: React.FC = () => {
         e.preventDefault();
         // Extract form data from the event or state
         const form = e.target as HTMLFormElement;
-        const nameInput = form.querySelector('input[type="text"]') as HTMLInputElement;
-        const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement;
-        const messageInput = form.querySelector('textarea') as HTMLTextAreaElement;
+        const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
+        const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+        const messageInput = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
         const earlyAccessInput = form.querySelector('#early-access') as HTMLInputElement;
+        const botCheckInput = form.querySelector('input[name="bot_check"]') as HTMLInputElement; // Honeypot
 
         // Company specific
-        const companyNameInput = activeTab === 'company' ? form.querySelectorAll('input[type="text"]')[1] as HTMLInputElement : null;
+        const companyNameInput = activeTab === 'company' ? form.querySelector('input[name="companyName"]') as HTMLInputElement : null;
 
         await saveRegistration({
             type: 'contact',
@@ -63,8 +67,9 @@ export const ContactForm: React.FC = () => {
             earlyAccess: earlyAccessInput?.checked,
             metadata: {
                 tab: activeTab
-            }
-        });
+            },
+            bot_check: botCheckInput?.value || ''
+        }, csrfToken);
 
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 5000);
@@ -87,7 +92,7 @@ export const ContactForm: React.FC = () => {
                                 {tab.icon}
                                 {tab.label}
                                 {activeTab === tab.id && (
-                                    <motion.div layoutId="contactTab" className="absolute bottom-0 left-0 right-0 h-1 bg-[#006D77]" />
+                                    <m.div layoutId="contactTab" className="absolute bottom-0 left-0 right-0 h-1 bg-[#006D77]" />
                                 )}
                             </button>
                         ))}
@@ -97,7 +102,7 @@ export const ContactForm: React.FC = () => {
                         <div className="lg:col-span-8">
                             <AnimatePresence mode="wait">
                                 {!submitted ? (
-                                    <motion.form
+                                    <m.form
                                         key={activeTab}
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
@@ -162,20 +167,14 @@ export const ContactForm: React.FC = () => {
                                             Send Message
                                             <Send size={20} />
                                         </button>
-                                    </motion.form>
+                                    </m.form>
                                 ) : (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="text-center py-20"
-                                    >
-                                        <div className="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
-                                            <CheckCircle2 size={48} />
-                                        </div>
-                                        <h3 className="text-3xl font-bold mb-4">Message Sent Successfully!</h3>
-                                        <p className="text-xl text-gray-500 max-w-md mx-auto">Thanks for reaching out. We'll get back to you within 24 hours at the email provided.</p>
-                                        <button onClick={() => setSubmitted(false)} className="mt-8 font-bold text-[#006D77] hover:underline">Send another message</button>
-                                    </motion.div>
+                                    <SuccessMessage
+                                        title="Message Sent Successfully!"
+                                        message="Thanks for reaching out. We'll get back to you within 24 hours at the email provided."
+                                        onClose={() => setSubmitted(false)}
+                                        actionLabel="Send another message"
+                                    />
                                 )}
                             </AnimatePresence>
                         </div>

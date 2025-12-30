@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle2, Lock } from 'lucide-react';
 import { saveRegistration } from '../lib/db';
 
@@ -27,7 +27,7 @@ const FinalCTA: React.FC = () => {
   return (
     <section className="py-24 bg-[#F8F9FA] relative px-6">
       <div className="max-w-5xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -39,7 +39,7 @@ const FinalCTA: React.FC = () => {
 
           <AnimatePresence mode="wait">
             {!submitted ? (
-              <motion.div
+              <m.div
                 key="form"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -92,22 +92,22 @@ const FinalCTA: React.FC = () => {
                     <span>No spam. Unsubscribe anytime. No credit card required.</span>
                   </div>
                 </form>
-              </motion.div>
+              </m.div>
             ) : (
-              <motion.div
+              <m.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center py-12"
               >
-                <motion.div
+                <m.div
                   initial={{ rotate: -180, opacity: 0 }}
                   animate={{ rotate: 0, opacity: 1 }}
                   transition={{ type: 'spring', damping: 10 }}
                   className="w-24 h-24 bg-white rounded-full flex items-center justify-center mb-8"
                 >
                   <CheckCircle2 size={48} className="text-[#006D77]" />
-                </motion.div>
+                </m.div>
                 <h3 className="text-4xl font-extrabold mb-4">You're on the list!</h3>
                 <p className="text-xl text-white/70 max-w-md mx-auto leading-relaxed">
                   Welcome to the future of home services. We'll reach out soon with your
@@ -119,10 +119,10 @@ const FinalCTA: React.FC = () => {
                 >
                   Return
                 </button>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

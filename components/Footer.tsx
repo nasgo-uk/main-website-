@@ -3,8 +3,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { Twitter, Instagram, Linkedin, Facebook, Youtube, Mail, Phone, Moon, Sun, Monitor, Type, MousePointer2, X, SunMoon, Palette, Eye } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { saveRegistration } from '../lib/db';
 
 const Footer: React.FC = () => {
@@ -99,11 +100,17 @@ const Footer: React.FC = () => {
           {/* Column 1: Brand */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="flex items-center gap-2 cursor-pointer">
-              <img
-                src="https://ik.imagekit.io/dkk0ianhs/nasgo%20logo%20orang.png"
-                alt="Nasgo Logo"
-                className="h-12 w-auto object-contain"
-              />
+              <div className="relative h-12 w-12">
+                <Image
+                  src="https://ik.imagekit.io/dkk0ianhs/nasgo%20logo%20orang.png"
+                  alt="Nasgo Logo"
+                  fill
+                  className="object-contain"
+                  loading="lazy"
+                  quality={85}
+                  sizes="48px"
+                />
+              </div>
               <span className="text-2xl font-extrabold tracking-tight text-white">Nasgo</span>
             </Link>
             <p className="text-white/80 font-bold text-lg">AI-Powered Home Services</p>
@@ -212,14 +219,14 @@ const Footer: React.FC = () => {
       <AnimatePresence>
         {isAccModalOpen && (
           <>
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsAccModalOpen(false)}
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
             />
-            <motion.div
+            <m.div
               role="dialog"
               aria-modal="true"
               aria-labelledby="acc-title"
@@ -267,7 +274,7 @@ const Footer: React.FC = () => {
                       onClick={() => toggleSetting(item.id as any)}
                       className={`w-14 h-7 rounded-full p-1 transition-all duration-300 relative ${settings[item.id as keyof typeof settings] ? 'bg-[#006D77]' : 'bg-gray-200'}`}
                     >
-                      <motion.div
+                      <m.div
                         animate={{ x: settings[item.id as keyof typeof settings] ? 28 : 0 }}
                         className="w-5 h-5 bg-white rounded-full shadow-lg"
                       />
@@ -290,7 +297,7 @@ const Footer: React.FC = () => {
                   Reset all settings to default
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

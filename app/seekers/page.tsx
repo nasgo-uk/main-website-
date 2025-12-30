@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import {
     ChevronRight,
@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import FinalCTA from '../../components/FinalCTA';
 import WaitlistModal from '../../components/WaitlistModal';
+import ServicesSection from '../../components/ServicesSection';
 
 const ServiceSeekersPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,8 +42,9 @@ const ServiceSeekersPage: React.FC = () => {
         <div className="">
             <SeekersHero onJoinWaitlist={() => setIsModalOpen(true)} />
             <BenefitsGrid />
+            <BenefitsGrid />
             <CustomerJourney />
-            <ServicesShowcase />
+            <ServicesSection />
             <TrustAndSafety />
             <FAQSection />
             <FinalCTA />
@@ -62,7 +64,7 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
     return (
         <section className="relative min-h-[70vh] flex items-center bg-nasgo-gradient text-white overflow-hidden py-20 px-6">
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
@@ -87,9 +89,9 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
                             See How It Works
                         </button>
                     </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1 }}
@@ -202,7 +204,7 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );
@@ -241,7 +243,7 @@ const BenefitsGrid = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {benefits.map((b, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             whileHover={{ y: -5 }}
                             initial={{ opacity: 0, y: 20 }}
@@ -255,7 +257,7 @@ const BenefitsGrid = () => {
                             </div>
                             <h3 className="text-2xl font-bold mb-4">{b.title}</h3>
                             <p className="text-gray-600 leading-relaxed">{b.desc}</p>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -304,7 +306,7 @@ const CustomerJourney = () => {
                 <div className="space-y-32">
                     {steps.map((step, i) => (
                         <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-center`}>
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -318,8 +320,8 @@ const CustomerJourney = () => {
                                     <h3 className="text-3xl font-bold">{step.title}</h3>
                                 </div>
                                 <p className="text-xl text-white/70 leading-relaxed">{step.desc}</p>
-                            </motion.div>
-                            <motion.div
+                            </m.div>
+                            <m.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
@@ -338,7 +340,7 @@ const CustomerJourney = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </m.div>
                         </div>
                     ))}
                 </div>
@@ -347,49 +349,7 @@ const CustomerJourney = () => {
     );
 };
 
-const ServicesShowcase = () => {
-    const categories = [
-        { icon: <Wrench />, name: "Plumbing", count: "12 services", sub: "Leaks, Pipes, Installation" },
-        { icon: <Zap />, name: "Electrical", count: "9 services", sub: "Wiring, Lighting, Panels" },
-        { icon: <Paintbrush />, name: "Painting", count: "6 services", sub: "Interior, Exterior, Touchup" },
-        { icon: <Trash2 />, name: "Cleaning", count: "10 services", sub: "Deep, Regular, Move-out" },
-        { icon: <Snowflake />, name: "HVAC", count: "5 services", sub: "AC Repair, Heating, Filters" },
-        { icon: <Flower2 />, name: "Landscaping", count: "8 services", sub: "Mowing, Design, Trimming" },
-        { icon: <Settings />, name: "Handyman", count: "15 services", sub: "Fixes, Furniture, Assembly" },
-        { icon: <Truck />, name: "Moving", count: "4 services", sub: "Home, Office, Deliveries" }
-    ];
 
-    return (
-        <section className="py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl font-extrabold mb-4">60+ Services at Your Fingertips</h2>
-                    <p className="text-xl text-gray-500">Whatever your home needs, we've got you covered.</p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {categories.map((c, i) => (
-                        <motion.div
-                            key={i}
-                            whileHover={{ y: -8, scale: 1.02 }}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.05 }}
-                            className="p-8 rounded-3xl bg-gray-50 border border-gray-100 transition-all hover:bg-white hover:shadow-xl group"
-                        >
-                            <div className="w-16 h-16 bg-[#006D77]/5 text-[#006D77] rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#006D77] group-hover:text-white transition-colors">
-                                {c.icon}
-                            </div>
-                            <h4 className="text-xl font-bold mb-1">{c.name}</h4>
-                            <div className="text-sm text-[#006D77] font-bold mb-4 uppercase tracking-tighter">{c.count}</div>
-                            <p className="text-sm text-gray-400">{c.sub}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
 
 const TrustAndSafety = () => {
     const pillars = [
@@ -447,7 +407,7 @@ const FAQSection = () => {
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -456,7 +416,7 @@ const FAQSection = () => {
                                         <div className="p-6 pt-0 text-gray-500 leading-relaxed border-t border-gray-50">
                                             {faq.a}
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
                         </div>

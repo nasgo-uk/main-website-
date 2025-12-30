@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 const PrivacyPage: React.FC = () => {
     const sections = [
@@ -31,13 +31,13 @@ const PrivacyPage: React.FC = () => {
         <div className="pt-32 pb-24 px-6 bg-[#F8F9FA]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-20">
-                    <motion.h1
+                    <m.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="text-4xl md:text-6xl font-extrabold text-[#264653] mb-6"
                     >
                         Privacy Policy
-                    </motion.h1>
+                    </m.h1>
                     <p className="text-gray-500 font-medium">Last Updated: October 15, 2025</p>
                     <div className="mt-8 max-w-2xl mx-auto p-6 bg-[#006D77]/5 rounded-2xl border border-[#006D77]/10 text-[#006D77] font-medium leading-relaxed">
                         At Nasgo, we take your privacy seriously. This policy explains how we collect, use, and protect your information when you use our platform.

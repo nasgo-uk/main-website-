@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, Check, Building2, User, Mail, Phone, MapPin, Loader2, Monitor } from 'lucide-react';
 import CustomDropdown from './CustomDropdown';
+import SuccessMessage from './SuccessMessage';
 import { saveRegistration } from '../lib/db';
+import { useCSRF } from '../hooks/useCSRF';
 
 interface CompanyRegistrationModalProps {
     isOpen: boolean;
@@ -12,6 +14,7 @@ interface CompanyRegistrationModalProps {
 }
 
 const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isOpen, onClose }) => {
+    const csrfToken = useCSRF();
     const [formData, setFormData] = useState({
         companyName: '',
         contactPerson: '',
@@ -19,7 +22,8 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
         phone: '',
         city: '',
         website: '',
-        fleetSize: '1-10 techs'
+        fleetSize: '1-10 techs',
+        bot_check: '' // Honeypot field
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -40,7 +44,7 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
                 city: formData.city,
                 website: formData.website
             }
-        });
+        }, csrfToken);
 
         if (result.success) {
             setIsSubmitting(false);
@@ -55,7 +59,8 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
                     phone: '',
                     city: '',
                     website: '',
-                    fleetSize: '1-10 techs'
+                    fleetSize: '1-10 techs',
+                    bot_check: ''
                 });
             }, 3000);
         } else {
@@ -68,7 +73,7 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
         <AnimatePresence>
             {isOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -76,7 +81,7 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
                         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                     />
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -97,13 +102,10 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
 
                         <div className="p-8">
                             {isSuccess ? (
-                                <div className="flex flex-col items-center justify-center py-12 text-center">
-                                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
-                                        <Check size={40} strokeWidth={3} />
-                                    </div>
-                                    <h3 className="text-2xl font-bold text-[#264653] mb-2">Registration Submitted!</h3>
-                                    <p className="text-gray-500">We'll review your details and contact you shortly to activate your company account.</p>
-                                </div>
+                                <SuccessMessage
+                                    title="Registration Submitted!"
+                                    message="We'll review your details and contact you shortly to activate your company account."
+                                />
                             ) : (
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -228,7 +230,7 @@ const CompanyRegistrationModal: React.FC<CompanyRegistrationModalProps> = ({ isO
                                 </form>
                             )}
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             )}
         </AnimatePresence>

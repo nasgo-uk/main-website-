@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
 interface CustomDropdownProps {
@@ -56,7 +56,7 @@ const CustomDropdown = ({
 
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -76,7 +76,7 @@ const CustomDropdown = ({
                                 {opt}
                             </button>
                         ))}
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>

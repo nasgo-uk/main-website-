@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play } from 'lucide-react';
 
 const Hero: React.FC = () => {
@@ -31,33 +31,36 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 px-6 overflow-hidden bg-[#F8F9FA]">
-      <div className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none">
-        <motion.div
+      <div className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+        <m.div
           animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
-          transition={{ duration: 15, repeat: Infinity }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#006D77]/5 rounded-full blur-[100px]"
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#006D77]/5 rounded-full blur-[80px]"
+          style={{ willChange: "transform" }}
         />
-        <motion.div
+        <m.div
           animate={{ x: [0, -40, 0], y: [0, 60, 0] }}
-          transition={{ duration: 12, repeat: Infinity }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#E76F51]/5 rounded-full blur-[100px]"
+          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#E76F51]/5 rounded-full blur-[80px]"
+          style={{ willChange: "transform" }}
         />
       </div>
 
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
+        <m.div
+          initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
             className="flex items-center gap-2 text-[#006D77] font-bold mb-6"
           >
             <Sparkles size={20} />
             <span className="uppercase tracking-widest text-sm">AI-Powered Home Services</span>
-          </motion.div>
+          </m.div>
 
           <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight mb-8">
             Your Home Services, <br />
@@ -98,18 +101,20 @@ const Hero: React.FC = () => {
               <span>Verified</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+        <m.div
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative flex justify-center lg:justify-end"
         >
           <div className="relative w-full max-w-[380px] aspect-[10/19]">
-            <motion.div
-              className="absolute inset-0 bg-[#2b2b2b] rounded-[3rem] p-[8px] shadow-2xl overflow-hidden animate-float z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
-              style={{ transformStyle: 'preserve-3d', rotateY: '5deg' }}
+            <m.div
+              className="absolute inset-0 bg-[#2b2b2b] rounded-[3rem] p-[8px] shadow-2xl overflow-hidden z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
+              style={{ transformStyle: 'preserve-3d', rotateY: '5deg', willChange: 'transform' }}
             >
               <div className="w-full h-full bg-[#f8fafc] rounded-[2.5rem] overflow-hidden relative flex flex-col">
                 {/* Status Bar & Dynamic Island */}
@@ -230,12 +235,13 @@ const Hero: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+              transition={{ duration: 4, repeat: Infinity, delay: 0.5, ease: "easeInOut" }}
               className="absolute -top-6 -right-6 glass p-3 rounded-2xl shadow-xl z-20 border-white/50 w-40"
+              style={{ willChange: 'transform' }}
             >
               <div className="flex items-center gap-2 mb-1.5">
                 <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center font-bold">
@@ -249,25 +255,26 @@ const Hero: React.FC = () => {
               <div className="flex gap-0.5">
                 {[1, 2, 3, 4, 5].map(i => <Star key={i} size={10} fill="#E76F51" color="#E76F51" />)}
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+              transition={{ duration: 5, repeat: Infinity, delay: 1, ease: "easeInOut" }}
               className="absolute top-1/2 -left-16 glass p-3 rounded-2xl shadow-xl z-20 border-white/50 w-44"
+              style={{ willChange: 'transform' }}
             >
               <div className="text-[10px] font-bold text-[#006D77] uppercase mb-0.5">AI Suggestion</div>
               <div className="text-base font-extrabold mb-1.5">£25 - £45</div>
               <div className="w-full h-1 bg-gray-100 rounded-full overflow-hidden">
-                <motion.div
+                <m.div
                   animate={{ width: ['0%', '75%'] }}
-                  transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse' }}
+                  transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse', ease: "easeInOut" }}
                   className="h-full bg-[#006D77]"
                 />
               </div>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

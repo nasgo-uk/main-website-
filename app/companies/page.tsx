@@ -6,8 +6,11 @@ import {
 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { saveRegistration } from '../../lib/db';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import CompanyRegistrationModal from '../../components/CompanyRegistrationModal';
+import SuccessMessage from '../../components/SuccessMessage';
+import Image from 'next/image';
+import { useCSRF } from '../../hooks/useCSRF';
 
 const CompaniesPage: React.FC = () => {
     return (
@@ -43,7 +46,7 @@ const CompaniesHero = () => {
             </div>
 
             <div className="max-w-[95%] xl:max-w-[90%] mx-auto w-full grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-8 items-center">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
@@ -101,9 +104,9 @@ const CompaniesHero = () => {
                             See Platform Preview
                         </button>
                     </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.2 }}
@@ -120,10 +123,11 @@ const CompaniesHero = () => {
                         </div>
                     </div>
                     {/* Floating Data Cards */}
-                    <motion.div
+                    <m.div
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 4, repeat: Infinity }}
                         className="absolute -top-6 -right-6 glass p-4 rounded-2xl shadow-xl border-white/50 text-[#264653] w-48"
+                        style={{ willChange: 'transform' }}
                     >
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-[#006D77]/10 text-[#006D77] rounded-lg flex items-center justify-center">
@@ -134,8 +138,8 @@ const CompaniesHero = () => {
                                 <div className="font-black">95% Stocked</div>
                             </div>
                         </div>
-                    </motion.div>
-                </motion.div>
+                    </m.div>
+                </m.div>
             </div>
             <CompanyRegistrationModal isOpen={isRegisterOpen} onClose={() => setIsRegisterOpen(false)} />
         </section>
@@ -184,7 +188,7 @@ const ProblemsSolved = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {problemPairs.map((pair, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +218,7 @@ const ProblemsSolved = () => {
                                 <h4 className="text-xl font-bold mb-2">{pair.sol}</h4>
                                 <p className="text-gray-500 text-sm leading-relaxed">{pair.solDesc}</p>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -296,7 +300,7 @@ const FeatureDeepDive = () => {
                 <div className="space-y-32">
                     {features.map((f, i) => (
                         <div key={i} className={`flex flex-col lg:flex-row gap-16 items-center ${f.align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, x: f.align === 'left' ? -50 : 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -315,12 +319,16 @@ const FeatureDeepDive = () => {
                                         </li>
                                     ))}
                                 </ul>
-                            </motion.div>
+                            </m.div>
                             <div className="lg:w-1/2 w-full aspect-video bg-gray-50 rounded-[3rem] border border-gray-100 flex items-center justify-center relative overflow-hidden group shadow-2xl">
-                                <img
+                                <Image
                                     src={f.image}
                                     alt={`${f.title} Preview`}
-                                    className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                                    fill
+                                    className="object-cover transform hover:scale-105 transition-transform duration-700"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    quality={90}
                                 />
                             </div>
                         </div>
@@ -345,7 +353,7 @@ const OnboardingSteps = () => {
                 <h2 className="text-4xl font-extrabold text-center mb-20">Get Started in 4 Simple Steps</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {steps.map((step, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -359,7 +367,7 @@ const OnboardingSteps = () => {
                             </div>
                             <h4 className="text-xl font-bold mb-4">{step.title}</h4>
                             <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -521,7 +529,7 @@ const CompanyFAQ = () => {
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -530,7 +538,7 @@ const CompanyFAQ = () => {
                                         <div className="p-8 pt-0 text-gray-500 text-lg leading-relaxed">
                                             {faq.a}
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
                         </div>
@@ -579,7 +587,7 @@ const CustomDropdown = ({
 
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -599,7 +607,7 @@ const CustomDropdown = ({
                                 {opt}
                             </button>
                         ))}
-                    </motion.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </div>
@@ -607,6 +615,7 @@ const CustomDropdown = ({
 };
 
 const FinalCompanyCTA = () => {
+    const csrfToken = useCSRF();
     const [submitted, setSubmitted] = useState(false);
     const [fleetOpen, setFleetOpen] = useState(false);
     const [fleetSize, setFleetSize] = useState("1-10 techs");
@@ -630,32 +639,35 @@ const FinalCompanyCTA = () => {
 
                 <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 md:p-12 lg:p-20 gap-12 lg:gap-20">
                     <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8">
-                        <motion.h1
+                        <m.h1
                             initial={{ opacity: 0, x: -40 }}
                             whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight"
                         >
                             Ready to Modernize <br />Your Operations?
-                        </motion.h1>
-                        <motion.p
+                        </m.h1>
+                        <m.p
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
                             transition={{ duration: 1, delay: 0.3 }}
                             className="text-lg lg:text-xl text-teal-50/90 leading-relaxed max-w-lg"
                         >
                             See how Nasgo can help you scale your service business with intelligent fleet management and real-time business intelligence.
-                        </motion.p>
+                        </m.p>
                         <ul className="space-y-5 mt-4">
                             {[
                                 "30-minute personalized walkthrough",
                                 "Custom ROI projection",
                                 "Dedicated onboarding support"
                             ].map((item, i) => (
-                                <motion.li
+                                <m.li
                                     key={i}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
                                     transition={{ duration: 0.6, delay: 0.5 + (i * 0.2) }}
                                     className="flex items-center space-x-4"
                                 >
@@ -665,14 +677,15 @@ const FinalCompanyCTA = () => {
                                         </svg>
                                     </div>
                                     <span className="text-white font-medium text-lg">{item}</span>
-                                </motion.li>
+                                </m.li>
                             ))}
                         </ul>
                     </div>
 
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.4 }}
                         className="w-full lg:w-5/12"
                     >
@@ -692,7 +705,7 @@ const FinalCompanyCTA = () => {
                                             companyName: companyInput.value,
                                             email: emailInput.value,
                                             fleetSize: fleetSize
-                                        });
+                                        }, csrfToken);
                                         setSubmitted(true);
                                     }
                                 }} className="space-y-6 relative z-10">
@@ -727,7 +740,7 @@ const FinalCompanyCTA = () => {
 
                                             <AnimatePresence>
                                                 {fleetOpen && (
-                                                    <motion.div
+                                                    <m.div
                                                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
@@ -746,7 +759,7 @@ const FinalCompanyCTA = () => {
                                                                 {opt}
                                                             </button>
                                                         ))}
-                                                    </motion.div>
+                                                    </m.div>
                                                 )}
                                             </AnimatePresence>
                                         </div>
@@ -777,16 +790,14 @@ const FinalCompanyCTA = () => {
                                     </p>
                                 </form>
                             ) : (
-                                <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-12 relative z-10">
-                                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-8">
-                                        <CheckCircle2 size={40} className="text-[#006D77]" />
-                                    </div>
-                                    <h3 className="text-3xl font-bold mb-4 text-white">Demo Booked!</h3>
-                                    <p className="text-white/70">Check your email for the calendar invitation and preparation materials. We'll speak soon!</p>
-                                </motion.div>
+                                <SuccessMessage
+                                    title="Demo Booked!"
+                                    message="Check your email for the calendar invitation and preparation materials. We'll speak soon!"
+                                    className="text-white"
+                                />
                             )}
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </section>

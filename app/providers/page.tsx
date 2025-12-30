@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
     Banknote,
     Bell,
@@ -74,7 +74,7 @@ const ProvidersHero = () => {
         <section className="relative min-h-screen flex items-center bg-nasgo-gradient text-white overflow-hidden py-24 px-6">
             <div className="absolute inset-0 pointer-events-none">
                 {[...Array(5)].map((_, i) => (
-                    <motion.div
+                    <m.div
                         key={i}
                         animate={{
                             y: [0, -40, 0],
@@ -89,23 +89,23 @@ const ProvidersHero = () => {
                         }}
                     >
                         <Banknote size={48 + i * 20} />
-                    </motion.div>
+                    </m.div>
                 ))}
             </div>
 
             <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <motion.div
+                    <m.div
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ repeat: Infinity, duration: 2 }}
                         className="inline-block px-4 py-1.5 rounded-full bg-[#E76F51] text-xs font-bold tracking-widest uppercase mb-8 shadow-lg shadow-[#E76F51]/30"
                     >
                         FOR SERVICE PROVIDERS
-                    </motion.div>
+                    </m.div>
 
                     <h1 className="text-5xl lg:text-7xl font-extrabold mb-8 leading-tight">
                         Turn Your Skills <br />
@@ -146,9 +146,9 @@ const ProvidersHero = () => {
                         <Check size={20} className="text-[#2A9D8F]" />
                         <span>Join 500+ providers already signed up</span>
                     </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     initial={{ opacity: 0, scale: 0.9, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
@@ -289,7 +289,7 @@ const ProvidersHero = () => {
                     </div>
                     {/* Visual Decorative Blur */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#006D77] rounded-full blur-[80px] -z-10 opacity-30" />
-                </motion.div>
+                </m.div>
             </div>
             <WaitlistModal isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
         </section>
@@ -391,7 +391,7 @@ const ProviderBenefits = () => {
                 <h2 className="text-4xl font-extrabold text-center mb-16">Everything You Need to Succeed</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {benefits.map((b, i) => (
-                        <motion.div
+                        <m.div
                             key={i}
                             whileHover={{ y: -10 }}
                             className="p-10 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100"
@@ -401,7 +401,7 @@ const ProviderBenefits = () => {
                             </div>
                             <h3 className="text-2xl font-bold mb-4">{b.title}</h3>
                             <p className="text-gray-500 leading-relaxed">{b.desc}</p>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>
@@ -440,7 +440,7 @@ const ProviderJourney = () => {
                 <div className="space-y-32">
                     {steps.map((step, i) => (
                         <div key={i} className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-center`}>
-                            <motion.div
+                            <m.div
                                 initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -454,8 +454,8 @@ const ProviderJourney = () => {
                                     <h3 className="text-3xl font-bold">{step.title}</h3>
                                 </div>
                                 <p className="text-xl text-white/70 leading-relaxed">{step.desc}</p>
-                            </motion.div>
-                            <motion.div
+                            </m.div>
+                            <m.div
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
@@ -499,7 +499,7 @@ const ProviderJourney = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </m.div>
                         </div>
                     ))}
                 </div>
@@ -586,7 +586,7 @@ const RequirementsSection = () => {
 
                     <div className="space-y-6">
                         {reqList.map((req, i) => (
-                            <motion.div
+                            <m.div
                                 key={i}
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -601,7 +601,7 @@ const RequirementsSection = () => {
                                     <h4 className="font-bold text-lg mb-1">{req.title}</h4>
                                     <p className="text-gray-500 text-sm leading-relaxed">{req.desc}</p>
                                 </div>
-                            </motion.div>
+                            </m.div>
                         ))}
                     </div>
                 </div>
@@ -669,7 +669,7 @@ const AppShowcase = () => (
 const FoundingBenefits = () => (
     <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 bg-nasgo-gradient rounded-[4rem] p-16 text-white text-center relative overflow-hidden">
-            <motion.div
+            <m.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 className="absolute -top-32 -right-32 w-64 h-64 border-2 border-white/10 rounded-full"
@@ -723,7 +723,7 @@ const FAQSection = () => {
                             </button>
                             <AnimatePresence>
                                 {openIndex === i && (
-                                    <motion.div
+                                    <m.div
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
@@ -732,7 +732,7 @@ const FAQSection = () => {
                                         <div className="p-8 pt-0 text-gray-500 text-lg leading-relaxed border-t border-gray-50">
                                             {faq.a}
                                         </div>
-                                    </motion.div>
+                                    </m.div>
                                 )}
                             </AnimatePresence>
                         </div>
