@@ -3,14 +3,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play, X } from 'lucide-react';
+import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const phrases = ["Smart", "Fast", "Secure"];
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     if (subIndex === phrases[index].length + 1 && !reverse) {
@@ -80,13 +79,31 @@ const Hero: React.FC = () => {
             <button className="bg-coral-gradient text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-[#E76F51]/30 hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2">
               Join Early Access
             </button>
-            <button
-              onClick={() => setShowVideo(true)}
-              className="border-2 border-[#264653] text-[#264653] px-10 py-5 rounded-full font-bold text-lg hover:bg-[#264653] hover:text-white transition-all flex items-center justify-center gap-2"
-            >
-              Watch the Trailer
-              <Play size={18} className="fill-current" />
-            </button>
+
+            <div className="relative group">
+              {/* Wistia Scripts */}
+              <script src="https://fast.wistia.com/player.js" async></script>
+              <script src="https://fast.wistia.com/embed/1gmomdxfyf.js" async type="module"></script>
+              <style jsx>{`
+                wistia-player[media-id='1gmomdxfyf']:not(:defined) {
+                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/1gmomdxfyf/swatch');
+                  display: block;
+                  filter: blur(5px);
+                }
+              `}</style>
+
+              {/* Visual Button (Non-clickable, for display only) */}
+              <div className="border-2 border-[#264653] text-[#264653] px-10 py-5 rounded-full font-bold text-lg group-hover:bg-[#264653] group-hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer">
+                Watch the Trailer
+                <Play size={18} className="fill-current" />
+              </div>
+
+              {/* Invisible Overlay to Trigger Video */}
+              <div className="absolute inset-0 opacity-0 z-10 overflow-hidden rounded-full">
+                {/* @ts-ignore */}
+                <wistia-player media-id="1gmomdxfyf" wistia-popover="true" aspect="1.7777777777777777" style={{ width: '100%', height: '100%' }}></wistia-player>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-sm font-semibold text-[#264653]/60">
@@ -280,45 +297,6 @@ const Hero: React.FC = () => {
           </div>
         </m.div>
       </div>
-
-      <AnimatePresence>
-        {showVideo && (
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-            onClick={() => setShowVideo(false)}
-          >
-            <m.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setShowVideo(false)}
-                className="absolute top-4 right-4 text-white/70 hover:text-white z-10 p-2 bg-black/50 rounded-full backdrop-blur transition-colors"
-                aria-label="Close video"
-              >
-                <X size={24} />
-              </button>
-              <div className="relative pt-[56.25%]">
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full"
-                  src="https://www.youtube.com/embed/sSbgjkqiibk?si=ua0NFgBwhrdQVB_j&autoplay=1"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </m.div>
-          </m.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
