@@ -1,9 +1,10 @@
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play } from 'lucide-react';
+
+import Script from 'next/script';
 
 const Hero: React.FC = () => {
   const phrases = ["Smart", "Fast", "Secure"];
@@ -31,6 +32,9 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 px-6 overflow-hidden bg-[#F8F9FA]">
+      <Script src="https://fast.wistia.com/player.js" strategy="afterInteractive" />
+      <Script src="https://fast.wistia.com/embed/1gmomdxfyf.js" strategy="afterInteractive" type="module" />
+
       <div className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
         <m.div
           animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
@@ -80,28 +84,17 @@ const Hero: React.FC = () => {
               Join Early Access
             </button>
 
-            <div className="relative group">
-              {/* Wistia Scripts */}
-              <script src="https://fast.wistia.com/player.js" async></script>
-              <script src="https://fast.wistia.com/embed/1gmomdxfyf.js" async type="module"></script>
-              <style jsx>{`
-                wistia-player[media-id='1gmomdxfyf']:not(:defined) {
-                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/1gmomdxfyf/swatch');
-                  display: block;
-                  filter: blur(5px);
-                }
-              `}</style>
-
-              {/* Visual Button (Non-clickable, for display only) */}
-              <div className="border-2 border-[#264653] text-[#264653] px-10 py-5 rounded-full font-bold text-lg group-hover:bg-[#264653] group-hover:text-white transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <div className="relative group rounded-full">
+              {/* Visual Button (Non-clickable, but keeps layout) */}
+              <div className="border-2 border-[#264653] text-[#264653] px-10 py-5 rounded-full font-bold text-lg group-hover:bg-[#264653] group-hover:text-white transition-all flex items-center justify-center gap-2">
                 Watch the Trailer
                 <Play size={18} className="fill-current" />
               </div>
 
-              {/* Invisible Overlay to Trigger Video */}
-              <div className="absolute inset-0 opacity-0 z-10 overflow-hidden rounded-full">
+              {/* Wistia Player Overlay - High Z-index ensures click capture */}
+              <div className="absolute inset-0 z-20 opacity-0 cursor-pointer w-full h-full">
                 {/* @ts-ignore */}
-                <wistia-player media-id="1gmomdxfyf" wistia-popover="true" aspect="1.7777777777777777" style={{ width: '100%', height: '100%' }}></wistia-player>
+                <wistia-player media-id="1gmomdxfyf" wistia-popover="true" aspect="1.7777777777777777" style={{ width: '100%', height: '100%', display: 'block' }}></wistia-player>
               </div>
             </div>
           </div>
@@ -223,7 +216,7 @@ const Hero: React.FC = () => {
                           { name: "Wellness", price: "From £15", icon: <Sparkles size={24} className="text-white" />, color: "bg-[#006D77]" }
                         ].map((cat, i) => (
                           <div key={i} className="bg-white p-4 rounded-[1.5rem] shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3">
-                            <div className={`w-14 h-14 ${cat.color} rounded-2xl shadow-lg flex items-center justify-center mb-1`}>
+                            <div className={`w - 14 h - 14 ${cat.color} rounded - 2xl shadow - lg flex items - center justify - center mb - 1`}>
                               {cat.icon}
                             </div>
                             <div>
