@@ -1,18 +1,23 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
-import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play } from 'lucide-react';
-
 import Script from 'next/script';
+import { createPortal } from 'react-dom';
+import { ContactForm } from './ContactForm';
+import { m, AnimatePresence } from 'framer-motion';
+import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play, X } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const phrases = ["Smart", "Fast", "Secure"];
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (subIndex === phrases[index].length + 1 && !reverse) {
       setReverse(true);
       return;
@@ -32,8 +37,6 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 px-6 overflow-hidden bg-[#F8F9FA]">
-      <Script src="https://fast.wistia.com/player.js" strategy="afterInteractive" />
-      <Script src="https://fast.wistia.com/embed/1gmomdxfyf.js" strategy="afterInteractive" type="module" />
 
       <div className="absolute top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
         <m.div
@@ -80,23 +83,20 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <button className="bg-coral-gradient text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-[#E76F51]/30 hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="bg-coral-gradient text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-[#E76F51]/30 hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2"
+            >
               Join Early Access
             </button>
 
-            <div className="relative group rounded-full">
-              {/* Visual Button (Non-clickable, but keeps layout) */}
-              <div className="border-2 border-[#264653] text-[#264653] px-10 py-5 rounded-full font-bold text-lg group-hover:bg-[#264653] group-hover:text-white transition-all flex items-center justify-center gap-2">
-                Watch the Trailer
-                <Play size={18} className="fill-current" />
-              </div>
-
-              {/* Wistia Player Overlay - High Z-index ensures click capture */}
-              <div className="absolute inset-0 z-20 opacity-0 cursor-pointer w-full h-full">
-                {/* @ts-ignore */}
-                <wistia-player media-id="1gmomdxfyf" wistia-popover="true" aspect="1.7777777777777777" style={{ width: '100%', height: '100%', display: 'block' }}></wistia-player>
-              </div>
-            </div>
+            <button
+              onClick={() => setIsVideoOpen(true)}
+              className="border-2 border-[#264653] text-[#264653] px-10 py-5 rounded-full font-bold text-lg hover:bg-[#264653] hover:text-white transition-all flex items-center justify-center gap-2 group"
+            >
+              Watch the Trailer
+              <Play size={18} className="fill-current" />
+            </button>
           </div>
 
           <div className="flex flex-wrap items-center gap-6 text-sm font-semibold text-[#264653]/60">
@@ -290,6 +290,81 @@ const Hero: React.FC = () => {
           </div>
         </m.div>
       </div>
+
+      {/* YouTube Video Modal */}
+      <AnimatePresence>
+        {isVideoOpen && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+            <m.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsVideoOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <m.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl z-10 bg-black rounded-lg overflow-hidden shadow-2xl"
+            >
+              <button
+                onClick={() => setIsVideoOpen(false)}
+                className="absolute -top-12 right-0 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors z-20"
+              >
+                <X size={24} className="text-gray-700" />
+              </button>
+              <div className="w-full flex justify-center">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/sSbgjkqiibk?si=rWaMXfgLhJkEitky"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </m.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Contact Popup Modal via Portal */}
+      {mounted && createPortal(
+        <AnimatePresence>
+          {isContactOpen && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+              <m.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsContactOpen(false)}
+                className="absolute inset-0 bg-black/60 backdrop-blur-md"
+              />
+              <m.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-transparent rounded-[2rem] z-10 scrollbar-hide"
+              >
+                <button
+                  onClick={() => setIsContactOpen(false)}
+                  className="absolute top-8 right-8 z-50 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors"
+                >
+                  <X size={24} className="text-gray-500" />
+                </button>
+                <div onClick={(e) => e.stopPropagation()}>
+                  <ContactForm />
+                </div>
+              </m.div>
+            </div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 };

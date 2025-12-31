@@ -76,7 +76,7 @@ export const ContactForm: React.FC = () => {
     };
 
     return (
-        <section className="py-24 bg-[#F8F9FA] px-6 rounded-[3rem]">
+        <section id="contact-form" className="py-24 bg-[#F8F9FA] px-6 rounded-[3rem]">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl font-extrabold text-center mb-16">What Can We Help You With?</h2>
 

@@ -161,3 +161,11 @@ body.acc-underline-links .bg-\[\#E76F51\] {
 body.acc-greyscale {
   filter: grayscale(1) !important;
 }
+
+/* Wistia Player Loading State */
+wistia-player[media-id='1gmomdxfyf']:not(:defined) {
+  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/1gmomdxfyf/swatch');
+  display: block;
+  filter: blur(5px);
+  padding-top: 56.25%;
+}
