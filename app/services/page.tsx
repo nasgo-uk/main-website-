@@ -1,10 +1,9 @@
-
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { servicesData } from '@/lib/servicesData';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { OrganizationSchema } from '@/components/seo/schemas/OrganizationSchema';
 
 export const metadata: Metadata = {
@@ -20,14 +19,17 @@ export default function ServicesPage() {
         <>
             <OrganizationSchema />
             <Navbar />
-            <main className="min-h-screen pt-24 pb-12 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-                <div className="container mx-auto px-4 max-w-7xl">
+            <main className="min-h-screen pt-32 pb-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-sans selection:bg-[#E76F51] selection:text-white">
+                <div className="container mx-auto px-6 max-w-7xl">
                     {/* Header */}
-                    <div className="text-center mb-16 space-y-4">
-                        <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent pb-2">
-                            Our Professional Services
+                    <div className="text-center mb-20 space-y-6">
+                        <div className="inline-flex items-center gap-2 text-[#E76F51] font-bold mb-2 bg-[#E76F51]/10 px-5 py-2 rounded-full border border-[#E76F51]/20">
+                            <span className="uppercase tracking-widest text-xs">Expert Solutions</span>
+                        </div>
+                        <h1 className="text-5xl md:text-6xl font-extrabold text-[#264653] tracking-tight font-poppins leading-tight">
+                            Our Professional <span className="text-transparent bg-clip-text bg-linear-to-r from-[#264653] to-[#006D77]">Services</span>
                         </h1>
-                        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        <p className="text-xl text-gray-500 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
                             Whatever your home needs, we have a verified expert ready to help.
                             Get an instant AI price quote and book in minutes.
                         </p>
@@ -39,39 +41,42 @@ export default function ServicesPage() {
                             <Link
                                 key={category.id}
                                 href={`/services/${category.id}`}
-                                className="group block"
+                                className="group block h-full"
                             >
-                                <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden transform hover:-translate-y-1">
-                                    <div className={`p-6 ${category.color} bg-opacity-20 flex items-center gap-4`}>
-                                        <div className={`p-3 rounded-xl bg-white dark:bg-gray-700 shadow-md`}>
+                                <div className="h-full bg-white dark:bg-gray-800 rounded-4xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden transform hover:-translate-y-2 flex flex-col">
+                                    <div className="p-8 pb-4 flex items-center gap-5">
+                                        <div className={`p-4 rounded-2xl bg-[#006D77]/5 text-[#006D77] group-hover:bg-[#006D77] group-hover:text-white transition-colors duration-300`}>
                                             <category.icon className="w-8 h-8" />
                                         </div>
-                                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
+                                        <h2 className="text-2xl font-bold text-[#264653] dark:text-white font-poppins">
                                             {category.name}
                                         </h2>
                                     </div>
 
-                                    <div className="p-6">
-                                        <p className="text-gray-600 dark:text-gray-300 mb-6 min-h-12">
+                                    <div className="p-8 pt-2 flex-1 flex flex-col">
+                                        <p className="text-gray-500 dark:text-gray-300 mb-8 min-h-12 text-lg leading-relaxed">
                                             {category.description}
                                         </p>
 
-                                        <ul className="space-y-3 mb-6">
+                                        <ul className="space-y-4 mb-8">
                                             {category.subCategories.flatMap(sub => sub.services).slice(0, 4).map((service) => (
-                                                <li key={service.id} className="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                                                    <CheckCircle2 className="w-4 h-4 mr-2 text-green-500" />
+                                                <li key={service.id} className="flex items-center text-gray-600 dark:text-gray-400 font-medium">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-[#E76F51] mr-3" />
                                                     {service.name}
                                                 </li>
                                             ))}
                                             {category.subCategories.flatMap(sub => sub.services).length > 4 && (
-                                                <li className="text-blue-500 text-sm font-medium pl-6">
+                                                <li className="text-[#006D77] text-sm font-bold pl-5 pt-1">
                                                     + {category.subCategories.flatMap(sub => sub.services).length - 4} more services
                                                 </li>
                                             )}
                                         </ul>
 
-                                        <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold group-hover:translate-x-2 transition-transform">
-                                            View All Services <ArrowRight className="w-4 h-4 ml-2" />
+                                        <div className="mt-auto flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-6 group-hover:border-[#006D77]/20 transition-colors">
+                                            <span className="font-bold text-[#264653]">View Catalog</span>
+                                            <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-[#264653] group-hover:bg-[#E76F51] group-hover:text-white transition-all">
+                                                <ArrowRight className="w-5 h-5" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -80,14 +85,17 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Bottom CTA */}
-                    <div className="mt-20 text-center bg-blue-600 rounded-3xl p-12 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                    <div className="mt-24 text-center bg-[#264653] rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-2xl">
+                        {/* Decorative blobs */}
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-[#006D77] rounded-full blur-[100px] opacity-50 translate-x-1/3 -translate-y-1/3" />
+                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#E76F51] rounded-full blur-[100px] opacity-30 -translate-x-1/3 translate-y-1/3" />
+
                         <div className="relative z-10">
-                            <h3 className="text-3xl font-bold text-white mb-6">Can&apos;t find what you&apos;re looking for?</h3>
-                            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-                                We are constantly adding new services. Contact our support team for a custom request.
+                            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 font-poppins">Can&apos;t find what you&apos;re looking for?</h3>
+                            <p className="text-gray-300 mb-10 max-w-2xl mx-auto text-lg">
+                                We are constantly adding new services. Contact our support team for a custom request and we will find a pro for you.
                             </p>
-                            <Link href="/contact" className="inline-block bg-white text-blue-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg">
+                            <Link href="/contact" className="inline-block bg-[#E76F51] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-[#d05a3d] transition-colors shadow-lg shadow-orange-900/20">
                                 Contact Support
                             </Link>
                         </div>
