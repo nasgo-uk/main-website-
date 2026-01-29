@@ -11,6 +11,9 @@ import FinalCTA from '../components/FinalCTA';
 import LocationsSection from '../components/LocationsSection';
 import BlogSection from '../components/BlogSection';
 
+// Force dynamic rendering to ensure sections always appear and avoid stale cache
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-gray-900 overflow-x-hidden selection:bg-[#E76F51] selection:text-white">
