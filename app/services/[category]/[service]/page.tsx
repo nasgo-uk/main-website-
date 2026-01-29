@@ -87,15 +87,15 @@ export default async function ServicePage({ params }: Props) {
             {service.faqs && <FAQSchema faqs={service.faqs} />}
 
             <Navbar />
-            <main className="min-h-screen pt-24 pb-12 bg-white dark:bg-gray-900">
+            <main className="min-h-screen pt-24 pb-12 bg-[#F8F9FA]">
                 <div className="container mx-auto px-4 max-w-6xl">
                     {/* Breadcrumb Visual */}
                     <nav className="flex items-center text-sm text-gray-500 mb-8 overflow-x-auto whitespace-nowrap">
-                        <Link href="/services" className="hover:text-blue-600 transition-colors">Services</Link>
+                        <Link href="/services" className="hover:text-[#006D77] transition-colors">Services</Link>
                         <ChevronRight className="w-4 h-4 mx-2" />
-                        <Link href={`/services/${category.id}`} className="hover:text-blue-600 transition-colors">{category.name}</Link>
+                        <Link href={`/services/${category.id}`} className="hover:text-[#006D77] transition-colors">{category.name}</Link>
                         <ChevronRight className="w-4 h-4 mx-2" />
-                        <span className="text-gray-900 dark:text-gray-200 font-medium">{service.name}</span>
+                        <span className="text-[#264653] font-medium">{service.name}</span>
                     </nav>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -107,24 +107,24 @@ export default async function ServicePage({ params }: Props) {
                                     <div className={`p-4 rounded-2xl ${category.color} bg-opacity-20`}>
                                         <service.icon className={`w-10 h-10 ${category.color.split(' ')[1]}`} />
                                     </div>
-                                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+                                    <h1 className="text-4xl md:text-5xl font-bold text-[#264653]">
                                         {service.name}
                                     </h1>
                                 </div>
-                                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                                <p className="text-xl text-[#264653]/70 leading-relaxed">
                                     {service.longDescription || service.description}
                                 </p>
                             </div>
 
                             {/* Key Features */}
                             {service.features && (
-                                <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 border border-gray-100 dark:border-gray-700">
-                                    <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">What&apos;s Included</h2>
+                                <div className="bg-white rounded-3xl p-8 border border-gray-100">
+                                    <h2 className="text-2xl font-bold mb-6 text-[#264653]">What&apos;s Included</h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {service.features.map((feature, i) => (
                                             <div key={i} className="flex items-start">
                                                 <CheckCircle2 className="w-5 h-5 text-green-500 mr-3 mt-1 shrink-0" />
-                                                <span className="text-gray-700 dark:text-gray-300">{feature}</span>
+                                                <span className="text-[#264653]/80">{feature}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -133,22 +133,22 @@ export default async function ServicePage({ params }: Props) {
 
                             {/* Why Choose NasGo */}
                             <div>
-                                <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Why Choose NasGo?</h2>
+                                <h2 className="text-2xl font-bold mb-8 text-[#264653]">Why Choose NasGo?</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-2xl">
-                                        <ShieldCheck className="w-8 h-8 text-blue-600 mb-4" />
+                                    <div className="p-6 border border-gray-200 rounded-2xl bg-white">
+                                        <ShieldCheck className="w-8 h-8 text-[#006D77] mb-4" />
                                         <h3 className="font-bold mb-2">Verified Pros</h3>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400">Every professional is ID checked, interviewed, and insured.</p>
+                                        <p className="text-sm text-[#264653]/70">Every professional is ID checked, interviewed, and insured.</p>
                                     </div>
-                                    <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-2xl">
+                                    <div className="p-6 border border-gray-200 rounded-2xl bg-white">
                                         <Banknote className="w-8 h-8 text-green-600 mb-4" />
                                         <h3 className="font-bold mb-2">Transparent Pricing</h3>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400">AI-powered quotes meaning fair prices with no hidden fees.</p>
+                                        <p className="text-sm text-[#264653]/70">AI-powered quotes meaning fair prices with no hidden fees.</p>
                                     </div>
-                                    <div className="p-6 border border-gray-200 dark:border-gray-700 rounded-2xl">
-                                        <Clock className="w-8 h-8 text-purple-600 mb-4" />
+                                    <div className="p-6 border border-gray-200 rounded-2xl bg-white">
+                                        <Clock className="w-8 h-8 text-[#E76F51] mb-4" />
                                         <h3 className="font-bold mb-2">Fast Booking</h3>
-                                        <p className="text-sm text-gray-600 dark:text-gray-400">Book in 60 seconds. Professionals available as soon as today.</p>
+                                        <p className="text-sm text-[#264653]/70">Book in 60 seconds. Professionals available as soon as today.</p>
                                     </div>
                                 </div>
                             </div>
@@ -156,12 +156,12 @@ export default async function ServicePage({ params }: Props) {
                             {/* FAQs */}
                             {service.faqs && (
                                 <div>
-                                    <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Frequently Asked Questions</h2>
+                                    <h2 className="text-2xl font-bold mb-6 text-[#264653]">Frequently Asked Questions</h2>
                                     <div className="space-y-4">
                                         {service.faqs.map((faq, i) => (
-                                            <div key={i} className="border border-gray-200 dark:border-gray-700 rounded-xl p-6">
-                                                <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">{faq.question}</h3>
-                                                <p className="text-gray-600 dark:text-gray-400">{faq.answer}</p>
+                                            <div key={i} className="border border-gray-200 rounded-xl p-6 bg-white">
+                                                <h3 className="font-bold text-lg mb-2 text-[#264653]">{faq.question}</h3>
+                                                <p className="text-[#264653]/70">{faq.answer}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -172,39 +172,39 @@ export default async function ServicePage({ params }: Props) {
                         {/* Sidebar / Booking Card */}
                         <div className="lg:col-span-1">
                             <div className="sticky top-28">
-                                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-6 sm:p-8">
-                                    <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white border-b pb-4 dark:border-gray-700">Service Details</h3>
+                                <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 sm:p-8">
+                                    <h3 className="text-xl font-bold mb-6 text-[#264653] border-b pb-4 border-gray-100">Service Details</h3>
 
                                     <div className="space-y-6 mb-8">
                                         <div className="flex items-center justify-between">
-                                            <div className="flex items-center text-gray-600 dark:text-gray-400">
+                                            <div className="flex items-center text-[#264653]/70">
                                                 <Banknote className="w-5 h-5 mr-3" />
                                                 <span>Estimated Price</span>
                                             </div>
-                                            <span className="font-bold text-lg text-gray-900 dark:text-white">{service.price}</span>
+                                            <span className="font-bold text-lg text-[#264653]">{service.price}</span>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <div className="flex items-center text-gray-600 dark:text-gray-400">
+                                            <div className="flex items-center text-[#264653]/70">
                                                 <Clock className="w-5 h-5 mr-3" />
                                                 <span>Duration</span>
                                             </div>
-                                            <span className="font-semibold text-gray-900 dark:text-white">{service.duration}</span>
+                                            <span className="font-semibold text-[#264653]">{service.duration}</span>
                                         </div>
                                     </div>
 
-                                    <Link href="/contact" className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl text-center transition-colors shadow-lg hover:shadow-blue-500/30 mb-4">
+                                    <Link href="/contact" className="block w-full bg-[#E76F51] hover:bg-[#d05a3d] text-white font-bold py-4 rounded-xl text-center transition-colors shadow-lg hover:shadow-orange-500/30 mb-4">
                                         Get Instant Quote
                                     </Link>
 
-                                    <p className="text-xs text-center text-gray-500 dark:text-gray-400 mb-6">
+                                    <p className="text-xs text-center text-gray-500 mb-6">
                                         No credit card required to get a quote.
                                     </p>
 
-                                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 flex items-start gap-3">
-                                        <Phone className="w-5 h-5 text-blue-600 mt-1" />
+                                    <div className="bg-[#006D77]/5 rounded-xl p-4 flex items-start gap-3">
+                                        <Phone className="w-5 h-5 text-[#006D77] mt-1" />
                                         <div>
-                                            <p className="text-sm font-semibold text-blue-900 dark:text-blue-200">Need help booking?</p>
-                                            <p className="text-sm text-blue-700 dark:text-blue-300">Call our support text: 07400 000 000</p>
+                                            <p className="text-sm font-semibold text-[#264653]">Need help booking?</p>
+                                            <p className="text-sm text-[#006D77]">Call our support text: 07400 000 000</p>
                                         </div>
                                     </div>
                                 </div>

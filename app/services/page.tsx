@@ -19,7 +19,7 @@ export default function ServicesPage() {
         <>
             <OrganizationSchema />
             <Navbar />
-            <main className="min-h-screen pt-32 pb-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-sans selection:bg-[#E76F51] selection:text-white">
+            <main className="min-h-screen pt-32 pb-20 bg-[#F8F9FA] transition-colors duration-300 font-sans selection:bg-[#E76F51] selection:text-white">
                 <div className="container mx-auto px-6 max-w-7xl">
                     {/* Header */}
                     <div className="text-center mb-20 space-y-6">
@@ -29,7 +29,7 @@ export default function ServicesPage() {
                         <h1 className="text-5xl md:text-6xl font-extrabold text-[#264653] tracking-tight font-poppins leading-tight">
                             Our Professional <span className="text-transparent bg-clip-text bg-linear-to-r from-[#264653] to-[#006D77]">Services</span>
                         </h1>
-                        <p className="text-xl text-gray-500 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-xl text-[#264653]/80 max-w-2xl mx-auto leading-relaxed">
                             Whatever your home needs, we have a verified expert ready to help.
                             Get an instant AI price quote and book in minutes.
                         </p>
@@ -43,24 +43,24 @@ export default function ServicesPage() {
                                 href={`/services/${category.id}`}
                                 className="group block h-full"
                             >
-                                <div className="h-full bg-white dark:bg-gray-800 rounded-4xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 overflow-hidden transform hover:-translate-y-2 flex flex-col">
+                                <div className="h-full bg-white rounded-4xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden transform hover:-translate-y-2 flex flex-col">
                                     <div className="p-8 pb-4 flex items-center gap-5">
                                         <div className={`p-4 rounded-2xl bg-[#006D77]/5 text-[#006D77] group-hover:bg-[#006D77] group-hover:text-white transition-colors duration-300`}>
                                             <category.icon className="w-8 h-8" />
                                         </div>
-                                        <h2 className="text-2xl font-bold text-[#264653] dark:text-white font-poppins">
+                                        <h2 className="text-2xl font-bold text-[#264653] font-poppins">
                                             {category.name}
                                         </h2>
                                     </div>
 
                                     <div className="p-8 pt-2 flex-1 flex flex-col">
-                                        <p className="text-gray-500 dark:text-gray-300 mb-8 min-h-12 text-lg leading-relaxed">
+                                        <p className="text-[#264653]/70 mb-8 min-h-12 text-lg leading-relaxed">
                                             {category.description}
                                         </p>
 
                                         <ul className="space-y-4 mb-8">
                                             {category.subCategories.flatMap(sub => sub.services).slice(0, 4).map((service) => (
-                                                <li key={service.id} className="flex items-center text-gray-600 dark:text-gray-400 font-medium">
+                                                <li key={service.id} className="flex items-center text-[#264653]/70 font-medium">
                                                     <div className="w-1.5 h-1.5 rounded-full bg-[#E76F51] mr-3" />
                                                     {service.name}
                                                 </li>
@@ -72,7 +72,7 @@ export default function ServicesPage() {
                                             )}
                                         </ul>
 
-                                        <div className="mt-auto flex items-center justify-between border-t border-gray-100 dark:border-gray-700 pt-6 group-hover:border-[#006D77]/20 transition-colors">
+                                        <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-6 group-hover:border-[#006D77]/20 transition-colors">
                                             <span className="font-bold text-[#264653]">View Catalog</span>
                                             <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-[#264653] group-hover:bg-[#E76F51] group-hover:text-white transition-all">
                                                 <ArrowRight className="w-5 h-5" />
