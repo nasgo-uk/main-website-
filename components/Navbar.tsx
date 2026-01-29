@@ -17,6 +17,7 @@ const Navbar: React.FC = () => {
   const pathname = usePathname();
 
   useEffect(() => {
+    // eslint-disable-next-line
     setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -55,7 +56,7 @@ const Navbar: React.FC = () => {
           }`}
       >
         <nav
-          className={`max-w-7xl mx-auto w-full transition-all duration-300 rounded-[2rem] ${isScrolled
+          className={`max-w-7xl mx-auto w-full transition-all duration-300 rounded-4xl ${isScrolled
             ? 'glass shadow-xl px-6 py-3 border-white/20'
             : 'bg-white/10 backdrop-blur-md px-6 py-3 border border-white/10'
             }`}
@@ -76,7 +77,7 @@ const Navbar: React.FC = () => {
                   sizes="40px"
                 />
               </div>
-              <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[#086A74] to-[#0A808C] bg-clip-text text-transparent">Nasgo</span>
+              <span className="text-2xl font-extrabold tracking-tight bg-linear-to-r from-[#086A74] to-[#0A808C] bg-clip-text text-transparent">Nasgo</span>
             </Link>
 
             {/* Desktop Links */}
@@ -160,7 +161,7 @@ const Navbar: React.FC = () => {
       {mounted && createPortal(
         <AnimatePresence>
           {isContactOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+            <div className="fixed inset-0 z-100 flex items-center justify-center px-4">
               <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -172,7 +173,7 @@ const Navbar: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-transparent rounded-[2rem] z-10 scrollbar-hide"
+                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-transparent rounded-4xl z-10 scrollbar-hide"
               >
                 <button
                   onClick={() => setIsContactOpen(false)}

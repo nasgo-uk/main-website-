@@ -78,7 +78,7 @@ const AboutHero = () => (
                 className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed"
             >
                 We believe getting home services should be transparent, fair, and effortless.
-                That's why we're building an AI-powered platform that connects people with the
+                That&apos;s why we&apos;re building an AI-powered platform that connects people with the
                 right professionals at the right price.
             </m.p>
         </div>
@@ -113,7 +113,7 @@ const TheProblemStory = () => (
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    The home services industry hasn't changed in decades. It's still built on phone calls,
+                    The home services industry hasn&apos;t changed in decades. It&apos;s still built on phone calls,
                     unclear pricing, and hoping you find someone trustworthy.
                 </m.p>
 
@@ -125,11 +125,11 @@ const TheProblemStory = () => (
                         className="p-8 border-l-4 border-[#006D77] bg-gray-50 rounded-r-3xl"
                     >
                         <p className="italic">
-                            "You need a plumber. You search online, see wildly different prices with no explanation.
-                            You call five people, three don't answer. One quotes £150, another £400 for the same job.
-                            Who's right? Who's reliable? You have no idea."
+                            &quot;You need a plumber. You search online, see wildly different prices with no explanation.
+                            You call five people, three don&apos;t answer. One quotes £150, another £400 for the same job.
+                            Who&apos;s right? Who&apos;s reliable? You have no idea.&quot;
                         </p>
-                        <div className="mt-4 font-bold text-[#006D77] text-sm uppercase">— THE CUSTOMER'S STRUGGLE</div>
+                        <div className="mt-4 font-bold text-[#006D77] text-sm uppercase">— THE CUSTOMER&apos;S STRUGGLE</div>
                     </m.div>
 
                     <m.div
@@ -139,11 +139,11 @@ const TheProblemStory = () => (
                         className="p-8 border-l-4 border-[#E76F51] bg-gray-50 rounded-r-3xl"
                     >
                         <p className="italic">
-                            "You're a skilled electrician. You spend hours calling potential customers, only to lose
+                            &quot;You&apos;re a skilled electrician. You spend hours calling potential customers, only to lose
                             jobs to competitors who undercut you unfairly. You work hard but spend too much time
-                            chasing work instead of doing it."
+                            chasing work instead of doing it.&quot;
                         </p>
-                        <div className="mt-4 font-bold text-[#E76F51] text-sm uppercase">— THE PROVIDER'S REALITY</div>
+                        <div className="mt-4 font-bold text-[#E76F51] text-sm uppercase">— THE PROVIDER&apos;S REALITY</div>
                     </m.div>
 
                     <m.div
@@ -153,11 +153,11 @@ const TheProblemStory = () => (
                         className="p-8 border-l-4 border-[#264653] bg-gray-50 rounded-r-3xl"
                     >
                         <p className="italic">
-                            "You run a cleaning company with 10 employees. You're juggling spreadsheets, phone calls,
+                            &quot;You run a cleaning company with 10 employees. You&apos;re juggling spreadsheets, phone calls,
                             and text messages. You have no idea where your team is, what supplies they have, or if
-                            customers are happy until it's too late."
+                            customers are happy until it&apos;s too late.&quot;
                         </p>
-                        <div className="mt-4 font-bold text-[#264653] text-sm uppercase">— THE COMPANY'S CHAOS</div>
+                        <div className="mt-4 font-bold text-[#264653] text-sm uppercase">— THE COMPANY&apos;S CHAOS</div>
                     </m.div>
                 </div>
 
@@ -328,7 +328,7 @@ const TechnologyDeepDive = () => {
             align: 'left',
             visual: (
                 <div className="relative w-full h-full flex items-center justify-center">
-                    <div className="relative w-64 aspect-[3/4] bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+                    <div className="relative w-64 aspect-3/4 bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
                         {/* Mock Image */}
                         <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                             <div className="text-white/10">
@@ -425,7 +425,7 @@ const TechnologyDeepDive = () => {
                                 viewport={{ once: true }}
                                 className="lg:w-1/2"
                             >
-                                <div className="w-20 h-20 bg-white/10 rounded-[2rem] border border-white/20 flex items-center justify-center mb-8 text-[#006D77]">
+                                <div className="w-20 h-20 bg-white/10 rounded-4xl border border-white/20 flex items-center justify-center mb-8 text-[#006D77]">
                                     {tech.icon}
                                 </div>
                                 <h3 className="text-3xl font-bold mb-6">{tech.title}</h3>
@@ -466,12 +466,12 @@ const OurVision = () => {
                 <h2 className="text-4xl font-extrabold mb-12">Our Vision for the Future</h2>
                 <div className="text-xl text-gray-500 leading-relaxed mb-16 space-y-6">
                     <p>
-                        "We envision a world where finding home services is as easy as ordering food.
-                        Where prices are transparent and fair. Where trust is built-in, not hoped for."
+                        &quot;We envision a world where finding home services is as easy as ordering food.
+                        Where prices are transparent and fair. Where trust is built-in, not hoped for.&quot;
                     </p>
                     <p>
-                        Nasgo starts with home services, but we're building something bigger—a trusted
-                        marketplace for any local service need. Today it's plumbing and cleaning.
+                        Nasgo starts with home services, but we&apos;re building something bigger—a trusted
+                        marketplace for any local service need. Today it&apos;s plumbing and cleaning.
                         Tomorrow it could be pet care, fitness, or tutoring.
                     </p>
                 </div>
@@ -509,7 +509,7 @@ const WhyJoinNow = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-20">
                     <h2 className="text-4xl font-extrabold mb-6">The Early Adopter Advantage</h2>
-                    <p className="text-xl text-gray-500 max-w-2xl mx-auto">Yes, we're launching soon. Here's why being early is your biggest advantage.</p>
+                    <p className="text-xl text-gray-500 max-w-2xl mx-auto">Yes, we&apos;re launching soon. Here&apos;s why being early is your biggest advantage.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -531,7 +531,7 @@ const WhyJoinNow = () => {
                 </div>
 
                 <div className="mt-16 text-center italic text-gray-400 max-w-2xl mx-auto">
-                    "Every great platform started somewhere. Uber, Airbnb, Upwork—they all had a Day One. This is ours. Will you be part of it?"
+                    &quot;Every great platform started somewhere. Uber, Airbnb, Upwork—they all had a Day One. This is ours. Will you be part of it?&quot;
                 </div>
             </div>
         </section>
@@ -552,7 +552,7 @@ const CoreValues = () => (
                     { icon: <Heart />, t: "Community", d: "We're building a community of people who believe in raising the standard of service." }
                 ].map((v, i) => (
                     <div key={i} className="flex gap-6">
-                        <div className="w-12 h-12 bg-[#006D77] text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 bg-[#006D77] text-white rounded-xl flex items-center justify-center shrink-0">
                             {v.icon}
                         </div>
                         <div>
@@ -571,7 +571,7 @@ const TheTeam = () => (
         <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div>
-                    <h2 className="text-4xl font-extrabold mb-8">Who's Building Nasgo?</h2>
+                    <h2 className="text-4xl font-extrabold mb-8">Who&apos;s Building Nasgo?</h2>
                     <p className="text-xl text-gray-500 leading-relaxed mb-8">
                         Nasgo is the brainchild of <strong className="text-[#006D77]">Mohammed Nasher</strong>, a visionary technologist who saw the broken state of home services.
                         Backed by a team of world-class engineers and designers, he is on a mission to bring transparency and fairness to the industry.
@@ -600,9 +600,9 @@ const TheTeam = () => (
                         <h3 className="text-2xl font-bold mb-1">Mohammed Nasher</h3>
                         <p className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-6">Founder & CEO</p>
                         <p className="text-gray-500 leading-relaxed italic mb-8">
-                            "I built Nasgo because I saw how broken the home services industry was.
+                            &quot;I built Nasgo because I saw how broken the home services industry was.
                             Nasgo is my answer to the lack of transparency I experienced as both
-                            a customer and an advisor to service companies."
+                            a customer and an advisor to service companies.&quot;
                         </p>
                         <div className="flex gap-4">
                             <button className="w-10 h-10 bg-gray-50 text-[#006D77] rounded-full flex items-center justify-center hover:bg-[#006D77] hover:text-white transition-all"><Linkedin size={18} /></button>
@@ -632,7 +632,7 @@ const Roadmap = () => {
                 <div className="space-y-12">
                     {roadmap.map((item, i) => (
                         <div key={i} className="flex gap-10">
-                            <div className="flex flex-col items-center flex-shrink-0">
+                            <div className="flex flex-col items-center shrink-0">
                                 <div className={`w-12 h-12 rounded-full border-4 flex items-center justify-center font-bold z-10 ${item.status === 'done' ? 'bg-[#2A9D8F] border-[#2A9D8F] text-white' :
                                     item.status === 'current' ? 'bg-white border-[#E76F51] text-[#E76F51] animate-pulse' : 'bg-white border-gray-100 text-gray-300'
                                     }`}>

@@ -60,7 +60,7 @@ const Screenshots: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 1.1, y: -50 }}
               transition={{ duration: 0.6 }}
-              className="w-full max-w-4xl glass rounded-[3rem] p-4 md:p-8 border-gray-100 flex flex-col md:flex-row gap-12 items-center"
+              className="w-full max-w-4xl glass rounded-5xl p-4 md:p-8 border-gray-100 flex flex-col md:flex-row gap-12 items-center"
             >
               <div className="w-full md:w-1/2 space-y-6">
                 <h3 className="text-3xl font-black text-[#264653] leading-tight">
@@ -71,7 +71,7 @@ const Screenshots: React.FC = () => {
                 <ul className="space-y-4">
                   {[1, 2, 3].map(i => (
                     <li key={i} className="flex items-start gap-4">
-                      <div className="w-6 h-6 rounded-full bg-[#2A9D8F] text-white flex items-center justify-center flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-[#2A9D8F] text-white flex items-center justify-center shrink-0">
                         <Check size={14} strokeWidth={3} />
                       </div>
                       <p className="text-gray-600 font-medium">
@@ -92,9 +92,9 @@ const Screenshots: React.FC = () => {
 
               <div className="w-full md:w-1/2">
                 <div className="relative flex justify-center">
-                  <div className="relative w-full max-w-[320px] aspect-[10/19]">
+                  <div className="relative w-full max-w-[320px] aspect-10/19">
                     <div
-                      className="absolute inset-0 bg-[#2b2b2b] rounded-[3rem] p-[8px] shadow-2xl overflow-hidden z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
+                      className="absolute inset-0 bg-[#2b2b2b] rounded-5xl p-[8px] shadow-2xl overflow-hidden z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
                     >
                       {/* Dynamic Island & Status Bar */}
                       {/* Dynamic Island & Status Bar */}
@@ -113,7 +113,7 @@ const Screenshots: React.FC = () => {
                       </div>
 
                       {/* Screen Content */}
-                      <div className={`w-full h-full rounded-[2.5rem] overflow-hidden relative flex flex-col pt-14 transition-colors duration-300 ${activeTab === 'Customer App' ? 'bg-[#f8fafc]' : 'bg-[#050505]'}`}>
+                      <div className={`w-full h-full rounded-5xl overflow-hidden relative flex flex-col pt-14 transition-colors duration-300 ${activeTab === 'Customer App' ? 'bg-[#f8fafc]' : 'bg-[#050505]'}`}>
                         {activeTab === 'Customer App' ? (
                           <>
                             {/* Header */}
@@ -134,7 +134,7 @@ const Screenshots: React.FC = () => {
                                   { name: "Gardening & Outdoor", icon: <Sprout size={24} className="text-white" />, color: "bg-[#2ECC71]" },
                                   { name: "Logistics & Help", icon: <Briefcase size={24} className="text-white" />, color: "bg-[#006D77]" }
                                 ].map((cat, i) => (
-                                  <div key={i} className="bg-white p-4 rounded-[1.5rem] shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3 aspect-square justify-center">
+                                  <div key={i} className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3 aspect-square justify-center">
                                     <div className={`w-12 h-12 ${cat.color} rounded-2xl shadow-lg flex items-center justify-center mb-1`}>
                                       {cat.icon}
                                     </div>
@@ -171,7 +171,7 @@ const Screenshots: React.FC = () => {
                             <div className="flex-1 overflow-y-auto px-6 pb-8 no-scrollbar space-y-6">
 
                               {/* Status Card */}
-                              <div className="bg-[#0B1120] rounded-[2rem] border border-[#00df9a] p-1 relative overflow-hidden">
+                              <div className="bg-[#0B1120] rounded-4xl border border-[#00df9a] p-1 relative overflow-hidden">
                                 <div className="bg-[#00df9a]/10 rounded-[1.8rem] p-5 flex justify-between items-center">
                                   <div>
                                     <div className="text-[10px] font-bold text-[#00df9a] tracking-wider mb-1">SYSTEM ONLINE</div>
@@ -184,10 +184,10 @@ const Screenshots: React.FC = () => {
                               </div>
 
                               {/* Earnings Card */}
-                              <div className="bg-[#1e293b] rounded-[2.5rem] p-6">
+                              <div className="bg-[#1e293b] rounded-5xl p-6">
                                 <div className="flex items-center gap-2 mb-4">
                                   <div className="w-2 h-2 rounded-full bg-[#00df9a]"></div>
-                                  <span className="text-xs font-bold text-gray-400 tracking-wide">TODAY'S EARNINGS</span>
+                                  <span className="text-xs font-bold text-gray-400 tracking-wide">TODAY&apos;S EARNINGS</span>
                                 </div>
                                 <div className="flex justify-between items-end mb-8">
                                   <div className="text-5xl font-bold tracking-tight">£190.0</div>
@@ -227,10 +227,10 @@ const Screenshots: React.FC = () => {
                               {/* Today's Jobs */}
                               <div>
                                 <div className="flex items-center justify-between mb-4">
-                                  <div className="font-bold text-lg">Today's Jobs</div>
+                                  <div className="font-bold text-lg">Today&apos;s Jobs</div>
                                   <span className="px-3 py-1 bg-[#264653] rounded-full text-[10px] text-gray-300">2 Pending</span>
                                 </div>
-                                <div className="bg-[#1e293b] rounded-[2rem] overflow-hidden">
+                                <div className="bg-[#1e293b] rounded-4xl overflow-hidden">
                                   <div className="p-4 flex justify-between items-center">
                                     <div className="flex items-center gap-3">
                                       <div className="w-10 h-10 rounded-xl bg-[#00df9a]/10 flex items-center justify-center">
@@ -242,7 +242,7 @@ const Screenshots: React.FC = () => {
                                   </div>
                                   <div className="h-32 bg-[#334155] relative flex items-center justify-center">
                                     {/* Mock Map */}
-                                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-500 to-[#1e293b]"></div>
+                                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-gray-500 to-[#1e293b]"></div>
                                     <div className="w-20 h-20 rounded-full bg-[#00df9a]/20 flex items-center justify-center animate-pulse z-10">
                                       <MapPin size={32} className="text-[#00df9a] fill-[#00df9a]/20" />
                                     </div>
@@ -283,7 +283,7 @@ const Screenshots: React.FC = () => {
                               </button>
 
                               {/* Revenue Card */}
-                              <div className="bg-[#111] rounded-[2rem] p-6 border border-[#222]">
+                              <div className="bg-[#111] rounded-4xl p-6 border border-[#222]">
                                 <div className="flex justify-between items-start mb-4">
                                   <div className="text-xs font-bold text-gray-500 tracking-wider">REVENUE</div>
                                   <Banknote size={18} className="text-[#2DD4BF]" />
@@ -296,7 +296,7 @@ const Screenshots: React.FC = () => {
                               </div>
 
                               {/* Active Jobs */}
-                              <div className="bg-[#111] rounded-[2rem] p-6 border border-[#222]">
+                              <div className="bg-[#111] rounded-4xl p-6 border border-[#222]">
                                 <div className="flex justify-between items-start mb-4">
                                   <div className="text-xs font-bold text-gray-500 tracking-wider">ACTIVE JOBS</div>
                                   <Activity size={18} className="text-[#E76F51]" />
@@ -306,7 +306,7 @@ const Screenshots: React.FC = () => {
                               </div>
 
                               {/* Fleet */}
-                              <div className="bg-[#111] rounded-[2rem] p-6 border border-[#222]">
+                              <div className="bg-[#111] rounded-4xl p-6 border border-[#222]">
                                 <div className="flex justify-between items-start mb-4">
                                   <div className="text-xs font-bold text-gray-500 tracking-wider">FLEET</div>
                                   <Users size={18} className="text-[#3b82f6]" />

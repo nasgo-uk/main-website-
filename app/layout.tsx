@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { siteConfig, defaultMeta } from "@/lib/seo.config";
+import { OrganizationSchema } from "@/components/seo/schemas/OrganizationSchema";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,33 +23,59 @@ const poppins = Poppins({
   fallback: ["system-ui", "arial"],
 });
 
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "NasGo | AI-Powered Home Services",
-  description: "NasGo | AI-Powered Home Services. Connect with verified professionals, get AI-driven price suggestions, and manage your home services with ease. ناسغو | خدمات منزلية مدعومة بالذكاء الاصطناعي. تواصل مع محترفين موثوقين وقم بإدارة خدماتك بكل سهولة.",
-  icons: {
-    icon: "https://ik.imagekit.io/dkk0ianhs/nasgo%20logo.png?updatedAt=1767023074294",
+  title: {
+    default: defaultMeta.title,
+    template: `%s | ${siteConfig.name}`,
   },
+  description: defaultMeta.description,
+  keywords: defaultMeta.keywords,
+  authors: [{ name: siteConfig.creator }],
+  creator: siteConfig.creator,
+  metadataBase: new URL(siteConfig.url),
   openGraph: {
-    title: "NasGo | AI-Powered Home Services",
-    description: "Connect with verified professionals, get AI-driven price suggestions, and manage your home services with ease.",
-    url: "https://nasgo.uk",
-    siteName: "NasGo",
+    type: "website",
+    locale: "en_GB",
+    url: siteConfig.url,
+    title: defaultMeta.title,
+    description: defaultMeta.description,
+    siteName: siteConfig.name,
     images: [
       {
-        url: "https://ik.imagekit.io/dkk0ianhs/NAS%20GO%20HUB/MAP.png",
+        url: siteConfig.ogImage,
         width: 1200,
         height: 630,
-        alt: "NasGo Platform Preview",
+        alt: siteConfig.name,
       },
     ],
-    locale: "en_GB",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "NasGo | AI-Powered Home Services",
-    description: "Connect with verified professionals, get AI-driven price suggestions, and manage your home services with ease.",
-    images: ["https://ik.imagekit.io/dkk0ianhs/NAS%20GO%20HUB/MAP.png"],
+    title: defaultMeta.title,
+    description: defaultMeta.description,
+    images: [siteConfig.ogImage],
+    creator: "@nasgouk",
+  },
+  icons: {
+    icon: "https://ik.imagekit.io/dkk0ianhs/nasgo%20logo.png?updatedAt=1767023074294",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -62,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="preload"
@@ -77,6 +105,7 @@ export default function RootLayout({
         className={`${inter.variable} ${poppins.variable} antialiased`}
       >
         <CookieConsentProvider>
+          <OrganizationSchema />
           <LazyMotion features={domAnimation} strict>
             <Navbar />
             <main className="min-h-screen pt-24">
@@ -87,6 +116,6 @@ export default function RootLayout({
           </LazyMotion>
         </CookieConsentProvider>
       </body>
-    </html>
+    </html >
   );
 }

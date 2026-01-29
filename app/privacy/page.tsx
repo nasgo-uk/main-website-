@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { m } from 'framer-motion';
 
 const PrivacyPage: React.FC = () => {
@@ -11,7 +11,7 @@ const PrivacyPage: React.FC = () => {
         { id: 'security', title: '4. Data Security' },
         { id: 'rights', title: '5. Your Rights and Choices' },
         { id: 'cookies', title: '6. Cookies and Tracking' },
-        { id: 'children', title: '7. Children\'s Privacy' },
+        { id: 'children', title: '7. Children&apos;s Privacy' },
         { id: 'international', title: '8. International Users' },
         { id: 'changes', title: '9. Changes to This Policy' },
         { id: 'contact', title: '10. Contact Us' },
@@ -87,7 +87,7 @@ const PrivacyPage: React.FC = () => {
                                 <div className="p-6 bg-white rounded-2xl border border-gray-100">
                                     <h4 className="font-bold mb-4">Automatically Collected Data</h4>
                                     <p className="text-sm text-gray-400 leading-relaxed italic">
-                                        "We use device data, location information (to match you with local pros), and platform usage metrics to optimize your experience."
+                                        &quot;We use device data, location information (to match you with local pros), and platform usage metrics to optimize your experience.&quot;
                                     </p>
                                 </div>
                             </div>
@@ -116,10 +116,10 @@ const PrivacyPage: React.FC = () => {
                         <section id="share" className="scroll-mt-32">
                             <h2 className="text-3xl font-extrabold text-[#264653] mb-8">3. How We Share Your Information</h2>
                             <p className="text-gray-500 leading-relaxed mb-6 text-lg">
-                                We share information with other users only when necessary for service delivery (e.g., sharing a customer's address with the matched provider).
+                                We share information with other users only when necessary for service delivery (e.g., sharing a customer&apos;s address with the matched provider).
                             </p>
                             <div className="bg-[#264653] p-8 rounded-3xl text-white">
-                                <h4 className="font-bold mb-4">The "No-Sale" Promise</h4>
+                                <h4 className="font-bold mb-4">The &quot;No-Sale&quot; Promise</h4>
                                 <p className="text-sm text-white/60 leading-relaxed font-medium">
                                     We do NOT sell your personal information to third-party marketers. Ever. Your trust is our most valuable asset.
                                 </p>
@@ -133,11 +133,11 @@ const PrivacyPage: React.FC = () => {
                             </p>
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <li className="flex gap-4">
-                                    <div className="w-10 h-10 bg-[#006D77]/10 text-[#006D77] rounded-lg flex items-center justify-center flex-shrink-0">🔒</div>
+                                    <div className="w-10 h-10 bg-[#006D77]/10 text-[#006D77] rounded-lg flex items-center justify-center shrink-0">🔒</div>
                                     <p className="text-sm font-bold text-gray-500">End-to-end encryption for all sensitive documents and ID photos.</p>
                                 </li>
                                 <li className="flex gap-4">
-                                    <div className="w-10 h-10 bg-[#006D77]/10 text-[#006D77] rounded-lg flex items-center justify-center flex-shrink-0">💳</div>
+                                    <div className="w-10 h-10 bg-[#006D77]/10 text-[#006D77] rounded-lg flex items-center justify-center shrink-0">💳</div>
                                     <p className="text-sm font-bold text-gray-500">PCI-compliant payment processing via world-class gateways.</p>
                                 </li>
                             </ul>

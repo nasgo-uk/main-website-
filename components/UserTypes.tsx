@@ -18,7 +18,7 @@ const UserTypes: React.FC = () => {
           >
             Everyone Wins with Nasgo
           </m.h2>
-          <p className="text-xl text-gray-500">Whether you're looking for help or looking to work, we've got you covered.</p>
+          <p className="text-xl text-gray-500">Whether you&apos;re looking for help or looking to work, we&apos;ve got you covered.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">

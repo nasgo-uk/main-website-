@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.nasgo.uk/</loc>
+    <lastmod>2025-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Main Pages -->
+  <url>
+    <loc>https://www.nasgo.uk/about</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/how-it-works</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/pricing</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/for-professionals</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/for-companies</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/contact</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/blog</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Service Pages - Cleaning -->
+  <url>
+    <loc>https://www.nasgo.uk/services/cleaning</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/cleaning/deep-cleaning</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/cleaning/end-of-tenancy</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/cleaning/oven-cleaning</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/cleaning/carpet-cleaning</loc>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Service Pages - Handyman -->
+  <url>
+    <loc>https://www.nasgo.uk/services/handyman</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/handyman/plumbing</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/handyman/electrical</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/handyman/locksmith</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/handyman/assembly</loc>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Service Pages - Other Categories -->
+  <url>
+    <loc>https://www.nasgo.uk/services/tech</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/wellness</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/automotive</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/gardening</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/services/logistics</loc>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Location Pages -->
+  <url>
+    <loc>https://www.nasgo.uk/birmingham</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/birmingham/cleaning</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/birmingham/plumber</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/birmingham/electrician</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nasgo.uk/birmingham/handyman</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>

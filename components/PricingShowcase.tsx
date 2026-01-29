@@ -1,34 +1,44 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { Cpu, TrendingUp, Search, Info, Check } from 'lucide-react';
+
+const SERVICES = ['Home Cleaning', 'Painting', 'Plumbing', 'Moving'];
+const PRICES_MAP: Record<string, number> = {
+  'Home Cleaning': 30,
+  'Painting': 150,
+  'Plumbing': 45,
+  'Moving': 80
+};
 
 const PricingShowcase: React.FC = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [price, setPrice] = useState(0);
   const [activeTab, setActiveTab] = useState('Home Cleaning');
 
-  const services = ['Home Cleaning', 'Painting', 'Plumbing', 'Moving'];
-  const pricesMap: Record<string, number> = {
-    'Home Cleaning': 30,
-    'Painting': 150,
-    'Plumbing': 45,
-    'Moving': 80
-  };
+  const handleAnalyze = useCallback((tab: string) => {
+    // Wrap in setTimeout to avoid synchronous state update warning when called from useEffect
+    setTimeout(() => {
+      setIsAnalyzing(true);
+      setPrice(0);
+      // Simulate API call/Analysis
+      setTimeout(() => {
+        setIsAnalyzing(false);
+        setPrice(PRICES_MAP[tab]);
+      }, 2000);
+    }, 0);
+  }, []);
 
   useEffect(() => {
-    handleAnalyze();
-  }, [activeTab]);
+    // Initial analysis on mount
+    handleAnalyze('Home Cleaning');
+  }, [handleAnalyze]);
 
-  const handleAnalyze = () => {
-    setIsAnalyzing(true);
-    setPrice(0);
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      setPrice(pricesMap[activeTab]);
-    }, 2000);
+  const handleTabChange = (service: string) => {
+    setActiveTab(service);
+    handleAnalyze(service);
   };
 
   return (
@@ -90,10 +100,10 @@ const PricingShowcase: React.FC = () => {
             </div>
 
             <div className="flex gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
-              {services.map((service) => (
+              {SERVICES.map((service) => (
                 <button
                   key={service}
-                  onClick={() => setActiveTab(service)}
+                  onClick={() => handleTabChange(service)}
                   className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-all ${activeTab === service ? 'bg-[#006D77] text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
                     }`}
                 >

@@ -15,14 +15,6 @@ import {
     CreditCard,
     Camera,
     Star,
-    Settings,
-    Paintbrush,
-    Droplets,
-    Truck,
-    Wrench,
-    Trash2,
-    Snowflake,
-    Flower2,
     Check,
     ChevronLeft,
     Timer,
@@ -98,7 +90,7 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
                     className="relative flex justify-center"
                 >
                     <div className="relative w-full max-w-[380px]">
-                        <div className="aspect-[10/19] bg-[#2b2b2b] rounded-[3rem] p-[8px] border-[6px] border-[#4a4a4a] shadow-2xl ring-1 ring-black/50 overflow-hidden relative">
+                        <div className="aspect-10/19 bg-[#2b2b2b] rounded-[3rem] p-[8px] border-[6px] border-[#4a4a4a] shadow-2xl ring-1 ring-black/50 overflow-hidden relative">
                             {/* Dynamic Island & Status Bar */}
                             <div className="absolute top-0 left-0 right-0 h-14 z-50 px-7 pt-3.5 flex justify-between items-start text-black">
                                 <span className="text-[13px] font-semibold pl-2 text-white">14:21</span>
@@ -117,7 +109,7 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
                             {/* Screen Content */}
                             <div className="w-full h-full bg-[#f8fafc] rounded-[2.5rem] overflow-hidden relative flex flex-col">
                                 {/* Header */}
-                                <div className="bg-[#006D77] px-6 pb-6 pt-16 text-white rounded-b-[2rem] shadow-lg relative z-10">
+                                <div className="bg-[#006D77] px-6 pb-6 pt-16 text-white rounded-b-4xl shadow-lg relative z-10">
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm">
                                             <ChevronLeft size={24} />
@@ -134,7 +126,7 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
                                 {/* Scrollable Content */}
                                 <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4 no-scrollbar">
                                     {/* Offer Card 1 - nasher */}
-                                    <div className="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 relative overflow-hidden">
+                                    <div className="bg-white p-5 rounded-4xl shadow-sm border border-gray-100 relative overflow-hidden">
                                         <div className="flex justify-between items-start mb-4">
                                             <div className="flex gap-3">
                                                 <div className="w-12 h-12 rounded-2xl bg-[#009688] flex items-center justify-center text-white text-lg font-bold">n</div>
@@ -165,7 +157,7 @@ const SeekersHero = ({ onJoinWaitlist }: { onJoinWaitlist: () => void }) => {
                                     </div>
 
                                     {/* Offer Card 2 - Provider */}
-                                    <div className="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 relative overflow-hidden">
+                                    <div className="bg-white p-5 rounded-4xl shadow-sm border border-gray-100 relative overflow-hidden">
                                         <div className="flex justify-between items-start mb-4">
                                             <div className="flex gap-3">
                                                 <div className="w-12 h-12 rounded-2xl bg-[#006D77] flex items-center justify-center text-white text-lg font-bold">P</div>
@@ -327,8 +319,8 @@ const CustomerJourney = () => {
                                 viewport={{ once: true }}
                                 className="lg:w-1/2 w-full flex justify-center"
                             >
-                                <div className="w-full max-w-[350px] aspect-[10/16] bg-white/5 rounded-[3rem] border border-white/10 p-6 flex items-center justify-center text-white/30 font-bold uppercase tracking-widest overflow-hidden relative">
-                                    <div className="absolute inset-4 bg-white/5 rounded-[2rem] flex flex-col items-center justify-center p-8">
+                                <div className="w-full max-w-[350px] aspect-10/16 bg-white/5 rounded-[3rem] border border-white/10 p-6 flex items-center justify-center text-white/30 font-bold uppercase tracking-widest overflow-hidden relative">
+                                    <div className="absolute inset-4 bg-white/5 rounded-4xl flex flex-col items-center justify-center p-8">
                                         <div className="w-full h-8 bg-white/10 rounded-full mb-8 animate-pulse" />
                                         <div className="w-3/4 h-32 bg-[#006D77]/20 rounded-2xl mb-8 flex items-center justify-center">
                                             {step.icon}

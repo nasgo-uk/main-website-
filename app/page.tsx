@@ -8,6 +8,8 @@ import HowItWorks from '../components/HowItWorks';
 import TrustSection from '../components/TrustSection';
 import Screenshots from '../components/Screenshots';
 import FinalCTA from '../components/FinalCTA';
+import LocationsSection from '../components/LocationsSection';
+import BlogSection from '../components/BlogSection';
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
       <HowItWorks />
       <Screenshots />
       <TrustSection />
+      <BlogSection />
+      <LocationsSection />
       <FinalCTA />
     </div>
   );

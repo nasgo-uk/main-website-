@@ -3,11 +3,42 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  trailingSlash: false,
+  // Redirects for SEO
+  async redirects() {
+    return [
+      {
+        source: '/home',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'ik.imagekit.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.nasgo.uk',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'nasgo.uk',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
         pathname: '/**',
       },
     ],
@@ -43,7 +74,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://firebasestorage.googleapis.com https://ik.imagekit.io; font-src 'self'; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://apis.google.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://firebasestorage.googleapis.com https://ik.imagekit.io https://images.unsplash.com; font-src 'self'; connect-src 'self' https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com;"
           }
         ]
       }

@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Twitter, Instagram, Linkedin, Facebook, Youtube, Mail, Phone, Moon, Sun, Monitor, Type, MousePointer2, X, SunMoon, Palette, Eye } from 'lucide-react';
+import { Twitter, Instagram, Linkedin, Facebook, Youtube, Mail, Phone, Type, MousePointer2, X, SunMoon, Palette, Eye } from 'lucide-react';
 import { m, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -141,6 +141,8 @@ const Footer: React.FC = () => {
                 <li><Link href="/seekers" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">For Customers</Link></li>
                 <li><Link href="/providers" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">For Providers</Link></li>
                 <li><Link href="/companies" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">For Companies</Link></li>
+                <li><Link href="/locations" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">Locations</Link></li>
+                <li><Link href="/blog" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">Blog & Advice</Link></li>
                 <li><Link href="/" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">Pricing</Link></li>
                 <li><Link href="/" className="text-sm text-white/60 hover:text-[#006D77] transition-all hover:translate-x-1 block">How It Works</Link></li>
               </ul>
@@ -224,7 +226,7 @@ const Footer: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsAccModalOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-100"
             />
             <m.div
               role="dialog"
@@ -233,7 +235,7 @@ const Footer: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-[2.5rem] shadow-2xl z-[101] overflow-hidden text-[#264653]"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-5xl shadow-2xl z-101 overflow-hidden text-[#264653]"
             >
               <div className="p-8 border-b border-gray-100 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -271,7 +273,7 @@ const Footer: React.FC = () => {
                     <button
                       role="switch"
                       aria-checked={settings[item.id as keyof typeof settings]}
-                      onClick={() => toggleSetting(item.id as any)}
+                      onClick={() => toggleSetting(item.id as keyof typeof settings)}
                       className={`w-14 h-7 rounded-full p-1 transition-all duration-300 relative ${settings[item.id as keyof typeof settings] ? 'bg-[#006D77]' : 'bg-gray-200'}`}
                     >
                       <m.div

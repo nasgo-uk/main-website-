@@ -1,8 +1,8 @@
 "use client";
 
 import {
-    CheckCircle2, ChevronRight, BarChart3, Users, Zap, Shield, TrendingUp, Globe, Clock, MessageSquare, Briefcase, CreditCard, ChevronDown, Check,
-    Package, Target, MapPin, Monitor, Calendar, ShieldCheck, XCircle, ArrowRight, Lock, Headset, Building2, Cpu, Mail, Smartphone
+    CheckCircle2, Users, Zap, TrendingUp, MessageSquare, Briefcase, CreditCard, ChevronDown, Check,
+    Package, Target, Monitor, XCircle, Headset, Building2, Mail
 } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 import { saveRegistration } from '../../lib/db';
@@ -114,7 +114,7 @@ const CompaniesHero = () => {
                 >
                     <div className="relative glass p-4 rounded-3xl border-white/20 shadow-2xl bg-white/5 backdrop-blur-xl">
                         {/* Mock Dashboard UI */}
-                        <div className="w-full aspect-[4/3] bg-[#0f172a] rounded-2xl overflow-hidden text-white flex flex-col border border-white/10 scale-[1.02]">
+                        <div className="w-full aspect-4/3 bg-[#0f172a] rounded-2xl overflow-hidden text-white flex flex-col border border-white/10 scale-[1.02]">
                             <iframe
                                 src="https://nasgohub-demo.vercel.app"
                                 className="w-full h-full border-none bg-[#0f172a]"
@@ -237,7 +237,7 @@ const DashboardPreview = () => (
                 <div className="aspect-video w-full bg-[#1a3a45] rounded-[3rem] p-4 border border-white/10 shadow-3xl overflow-hidden relative">
                     <iframe
                         src="https://nasgohub-demo.vercel.app"
-                        className="w-full h-full rounded-[2rem] bg-white border-none"
+                        className="w-full h-full rounded-4xl bg-white border-none"
                         title="NasGo Hub Demo"
                     />
 
@@ -307,6 +307,7 @@ const FeatureDeepDive = () => {
                                 className="lg:w-1/2"
                             >
                                 <div className="w-16 h-16 bg-[#006D77]/5 rounded-2xl flex items-center justify-center mb-8">
+                                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                     {React.cloneElement(f.icon as React.ReactElement, { size: 32 } as any)}
                                 </div>
                                 <h3 className="text-3xl font-bold mb-6">{f.title}</h3>
@@ -363,6 +364,7 @@ const OnboardingSteps = () => {
                         >
                             <div className="text-6xl font-black text-gray-50 mb-6 absolute top-4 right-8 group-hover:text-[#006D77]/5 transition-colors">{step.num}</div>
                             <div className="w-14 h-14 bg-[#006D77]/5 text-[#006D77] rounded-xl flex items-center justify-center mb-8">
+                                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                 {React.cloneElement(step.icon as React.ReactElement, { size: 28 } as any)}
                             </div>
                             <h4 className="text-xl font-bold mb-4">{step.title}</h4>
@@ -549,71 +551,6 @@ const CompanyFAQ = () => {
     );
 };
 
-const CustomDropdown = ({
-    label,
-    value,
-    options,
-    onChange
-}: {
-    label: string,
-    value: string,
-    options: string[],
-    onChange: (val: string) => void
-}) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
-
-    return (
-        <div className="space-y-2 relative" ref={dropdownRef}>
-            <label className="text-xs font-bold text-white tracking-wider">{label}</label>
-            <button
-                type="button"
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-full bg-[#5D6D7E]/50 border border-white/30 rounded-xl px-4 py-3 text-white flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-[#E76F51] transition-all hover:bg-[#5D6D7E]/70 shadow-inner"
-            >
-                <span className="font-bold text-white">{value}</span>
-                <ChevronDown className={`transition-transform duration-300 text-white ${isOpen ? 'rotate-180' : ''}`} size={16} />
-            </button>
-
-            <AnimatePresence>
-                {isOpen && (
-                    <m.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute left-0 right-0 top-full mt-2 z-[60] bg-[#264653] rounded-xl overflow-hidden border border-white/20 shadow-2xl py-2"
-                    >
-                        {options.map((opt) => (
-                            <button
-                                key={opt}
-                                type="button"
-                                onClick={() => {
-                                    onChange(opt);
-                                    setIsOpen(false);
-                                }}
-                                className={`w-full px-4 py-3 text-left text-sm font-bold transition-colors hover:bg-[#006D77] ${value === opt ? 'bg-[#006D77] text-white' : 'text-white/80'
-                                    }`}
-                            >
-                                {opt}
-                            </button>
-                        ))}
-                    </m.div>
-                )}
-            </AnimatePresence>
-        </div>
-    );
-};
-
 const FinalCompanyCTA = () => {
     const csrfToken = useCSRF();
     const [submitted, setSubmitted] = useState(false);
@@ -633,7 +570,7 @@ const FinalCompanyCTA = () => {
 
     return (
         <section className="py-24 bg-[#F8F9FA] px-6">
-            <div className="max-w-[95%] xl:max-w-[90%] mx-auto bg-gradient-to-br from-[#1A8993] to-[#006D77] rounded-[3rem] shadow-2xl overflow-hidden relative">
+            <div className="max-w-[95%] xl:max-w-[90%] mx-auto bg-linear-to-br from-[#1A8993] to-[#006D77] rounded-[3rem] shadow-2xl overflow-hidden relative">
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-float"></div>
                 <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#264653]/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
 
@@ -671,7 +608,7 @@ const FinalCompanyCTA = () => {
                                     transition={{ duration: 0.6, delay: 0.5 + (i * 0.2) }}
                                     className="flex items-center space-x-4"
                                 >
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-sm">
+                                    <div className="shrink-0 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center border border-white/20 shadow-sm">
                                         <svg className="w-5 h-5 text-[#2A9D8F]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"></path>
                                         </svg>
@@ -690,7 +627,7 @@ const FinalCompanyCTA = () => {
                         className="w-full lg:w-5/12"
                     >
                         <div className="p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden group bg-white/10 backdrop-blur-xl border border-white/20">
-                            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none"></div>
+                            <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] pointer-events-none"></div>
                             {!submitted ? (
                                 <form onSubmit={async (e) => {
                                     e.preventDefault();
@@ -712,14 +649,14 @@ const FinalCompanyCTA = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                         <div className="relative group">
                                             <input
-                                                className="block px-6 pb-3 pt-6 w-full text-white bg-slate-800/40 border border-white/20 appearance-none focus:outline-none focus:ring-2 focus:ring-[#006D77] focus:border-transparent peer rounded-[2rem] transition-all placeholder-transparent"
+                                                className="block px-6 pb-3 pt-6 w-full text-white bg-slate-800/40 border border-white/20 appearance-none focus:outline-none focus:ring-2 focus:ring-[#006D77] focus:border-transparent peer rounded-4xl transition-all placeholder-transparent"
                                                 id="company"
                                                 placeholder=" "
                                                 type="text"
                                                 required
                                             />
                                             <label
-                                                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 cursor-text peer-focus:text-teal-200"
+                                                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-left left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 cursor-text peer-focus:text-teal-200"
                                                 htmlFor="company"
                                             >
                                                 Company Name
@@ -729,9 +666,9 @@ const FinalCompanyCTA = () => {
                                             <button
                                                 type="button"
                                                 onClick={() => setFleetOpen(!fleetOpen)}
-                                                className="block w-full text-left px-6 pb-2.5 pt-5 text-white bg-slate-800/40 border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-[#006D77] relative rounded-t-[2rem] rounded-b-none transition-colors"
+                                                className="block w-full text-left px-6 pb-2.5 pt-5 text-white bg-slate-800/40 border-0 border-b-2 border-white/20 appearance-none focus:outline-none focus:ring-0 focus:border-[#006D77] relative rounded-t-4xl rounded-b-none transition-colors"
                                             >
-                                                <span className="block text-sm text-teal-200 transform scale-75 origin-[0] absolute top-4 left-6">Fleet Size</span>
+                                                <span className="block text-sm text-teal-200 transform scale-75 origin-left absolute top-4 left-6">Fleet Size</span>
                                                 <span className="block mt-4">{fleetSize}</span>
                                                 <div className="absolute right-6 top-1/2 mt-2 -translate-y-1/2 pointer-events-none text-white/70">
                                                     <ChevronDown size={20} className={`transition-transform duration-300 ${fleetOpen ? 'rotate-180' : ''}`} />
@@ -744,7 +681,7 @@ const FinalCompanyCTA = () => {
                                                         initial={{ opacity: 0, y: 10, scale: 0.95 }}
                                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                                         exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                                        className="absolute left-0 right-0 top-full z-[60] bg-[#264653] rounded-b-[2rem] overflow-hidden border-x border-b border-white/20 shadow-2xl py-2 max-h-60 overflow-y-auto"
+                                                        className="absolute left-0 right-0 top-full z-60 bg-[#264653] rounded-b-4xl overflow-hidden border-x border-b border-white/20 shadow-2xl py-2 max-h-60 overflow-y-auto"
                                                     >
                                                         {["1-10 techs", "11-50 techs", "51-200 techs", "200+ techs"].map((opt) => (
                                                             <button
@@ -766,14 +703,14 @@ const FinalCompanyCTA = () => {
                                     </div>
                                     <div className="relative group">
                                         <input
-                                            className="block px-6 pb-3 pt-6 w-full text-white bg-slate-800/40 border border-white/20 appearance-none focus:outline-none focus:ring-2 focus:ring-[#006D77] focus:border-transparent peer rounded-[2rem] transition-all placeholder-transparent"
+                                            className="block px-6 pb-3 pt-6 w-full text-white bg-slate-800/40 border border-white/20 appearance-none focus:outline-none focus:ring-2 focus:ring-[#006D77] focus:border-transparent peer rounded-4xl transition-all placeholder-transparent"
                                             id="email"
                                             placeholder=" "
                                             type="email"
                                             required
                                         />
                                         <label
-                                            className="absolute text-sm text-gray-300 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 cursor-text peer-focus:text-teal-200"
+                                            className="absolute text-sm text-gray-300 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-left left-6 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 cursor-text peer-focus:text-teal-200"
                                             htmlFor="email"
                                         >
                                             Your Email

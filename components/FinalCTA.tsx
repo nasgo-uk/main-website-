@@ -65,7 +65,7 @@ const FinalCTA: React.FC = () => {
                           : 'bg-transparent text-white border-white/30 hover:border-white'
                           }`}
                       >
-                        I'm a {type}
+                        I&apos;m a {type}
                       </button>
                     ))}
                   </div>
@@ -108,9 +108,9 @@ const FinalCTA: React.FC = () => {
                 >
                   <CheckCircle2 size={48} className="text-[#006D77]" />
                 </m.div>
-                <h3 className="text-4xl font-extrabold mb-4">You're on the list!</h3>
+                <h3 className="text-4xl font-extrabold mb-4">You&apos;re on the list!</h3>
                 <p className="text-xl text-white/70 max-w-md mx-auto leading-relaxed">
-                  Welcome to the future of home services. We'll reach out soon with your
+                  Welcome to the future of home services. We&apos;ll reach out soon with your
                   exclusive early access link to {email}.
                 </p>
                 <button

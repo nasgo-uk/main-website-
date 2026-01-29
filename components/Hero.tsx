@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Script from 'next/script';
+
 import { createPortal } from 'react-dom';
 import { ContactForm } from './ContactForm';
 import { m, AnimatePresence } from 'framer-motion';
-import { MousePointer2, Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, SprayCan, Wrench, Smartphone, Heart, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play, X } from 'lucide-react';
+import { Star, Sparkles, Check, Bell, Search, SlidersHorizontal, Tag, Home, Calendar, MessageSquare, User, Battery, Wifi, Signal, ChevronRight, Brush, Hammer, Settings, Play, X } from 'lucide-react';
 
+const phrases = ["Smart", "Fast", "Secure"];
 const Hero: React.FC = () => {
-  const phrases = ["Smart", "Fast", "Secure"];
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [reverse, setReverse] = useState(false);
@@ -17,6 +17,7 @@ const Hero: React.FC = () => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line
     setMounted(true);
     if (subIndex === phrases[index].length + 1 && !reverse) {
       setReverse(true);
@@ -123,14 +124,14 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative flex justify-center lg:justify-end"
         >
-          <div className="relative w-full max-w-[380px] aspect-[10/19]">
+          <div className="relative w-full max-w-[380px] aspect-10/19">
             <m.div
-              className="absolute inset-0 bg-[#2b2b2b] rounded-[3rem] p-[8px] shadow-2xl overflow-hidden z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
+              className="absolute inset-0 bg-[#2b2b2b] rounded-5xl p-[8px] shadow-2xl overflow-hidden z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 6, ease: "easeInOut", repeat: Infinity }}
               style={{ transformStyle: 'preserve-3d', rotateY: '5deg', willChange: 'transform' }}
             >
-              <div className="w-full h-full bg-[#f8fafc] rounded-[2.5rem] overflow-hidden relative flex flex-col">
+              <div className="w-full h-full bg-[#f8fafc] rounded-5xl overflow-hidden relative flex flex-col">
                 {/* Status Bar & Dynamic Island */}
                 <div className="absolute top-0 left-0 right-0 h-14 z-50 px-7 pt-3.5 flex justify-between items-start text-black">
                   <span className="text-[13px] font-semibold pl-2">12:51</span>
@@ -177,7 +178,7 @@ const Hero: React.FC = () => {
                 <div className="flex-1 overflow-hidden relative">
                   <div className="px-6 pb-20 space-y-8 pt-4">
                     {/* Banner */}
-                    <div className="w-full bg-gradient-to-br from-[#00A896] to-[#028090] rounded-3xl p-6 relative overflow-hidden shadow-xl shadow-[#006D77]/20 text-white">
+                    <div className="w-full bg-linear-to-br from-[#00A896] to-[#028090] rounded-3xl p-6 relative overflow-hidden shadow-xl shadow-[#006D77]/20 text-white">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -mr-10 -mt-10" />
                       <div className="absolute bottom-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-xl mr-4 mb-4" />
 
@@ -215,7 +216,7 @@ const Hero: React.FC = () => {
                           { name: "Tech & Smart", price: "From £40", icon: <Settings size={24} className="text-white" />, color: "bg-[#028090]" },
                           { name: "Wellness", price: "From £15", icon: <Sparkles size={24} className="text-white" />, color: "bg-[#006D77]" }
                         ].map((cat, i) => (
-                          <div key={i} className="bg-white p-4 rounded-[1.5rem] shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3">
+                          <div key={i} className="bg-white p-4 rounded-3xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-3">
                             <div className={`w - 14 h - 14 ${cat.color} rounded - 2xl shadow - lg flex items - center justify - center mb - 1`}>
                               {cat.icon}
                             </div>
@@ -294,7 +295,7 @@ const Hero: React.FC = () => {
       {/* YouTube Video Modal */}
       <AnimatePresence>
         {isVideoOpen && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+          <div className="fixed inset-0 z-100 flex items-center justify-center px-4">
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -336,7 +337,7 @@ const Hero: React.FC = () => {
       {mounted && createPortal(
         <AnimatePresence>
           {isContactOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+            <div className="fixed inset-0 z-100 flex items-center justify-center px-4">
               <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -348,7 +349,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-transparent rounded-[2rem] z-10 scrollbar-hide"
+                className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto bg-transparent rounded-4xl z-10 scrollbar-hide"
               >
                 <button
                   onClick={() => setIsContactOpen(false)}

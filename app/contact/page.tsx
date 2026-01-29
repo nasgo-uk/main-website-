@@ -9,7 +9,6 @@ import {
     Twitter,
     Linkedin,
     Instagram,
-    Facebook,
     ChevronDown,
     Send,
     CheckCircle2,
@@ -23,10 +22,10 @@ import {
     Clock,
     ArrowRight
 } from 'lucide-react';
-import CustomDropdown from '../../components/CustomDropdown';
 import { ContactForm } from '../../components/ContactForm';
 
 const ContactPage: React.FC = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [activeTab, setActiveTab] = useState<'customer' | 'provider' | 'company' | 'general'>('customer');
 
     const scrollToSection = (id: string) => {
@@ -54,16 +53,16 @@ const ContactPage: React.FC = () => {
     );
 };
 
-const ContactHero = ({ onScrollTo }: { onScrollTo: (tab: any) => void }) => (
+const ContactHero = ({ onScrollTo }: { onScrollTo: (tab: 'customer' | 'provider' | 'company' | 'general') => void }) => (
     <section className="relative min-h-[50vh] flex items-center justify-center bg-nasgo-gradient text-white overflow-hidden py-24 px-6 text-center">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-from)_0%,_transparent_70%)] from-white" />
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,var(--tw-gradient-from)_0%,transparent_70%)] from-white" />
         <div className="max-w-4xl mx-auto relative z-10">
             <m.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-5xl md:text-7xl font-extrabold mb-8"
             >
-                We're Here to Help
+                We&apos;re Here to Help
             </m.h1>
             <m.p
                 initial={{ opacity: 0, y: 20 }}
@@ -71,15 +70,15 @@ const ContactHero = ({ onScrollTo }: { onScrollTo: (tab: any) => void }) => (
                 transition={{ delay: 0.2 }}
                 className="text-xl md:text-2xl text-white/80 mb-12 max-w-2xl mx-auto"
             >
-                Have questions? Need support? Want to partner? We'd love to hear from you.
+                Have questions? Need support? Want to partner? We&apos;d love to hear from you.
             </m.p>
 
             <div className="flex flex-wrap justify-center gap-4">
                 {[
-                    { label: "I'm a Customer", icon: <User size={18} />, tab: 'customer' },
-                    { label: "I'm a Provider", icon: <Briefcase size={18} />, tab: 'provider' },
-                    { label: "I'm a Company", icon: <Building2 size={18} />, tab: 'company' },
-                    { label: "General Inquiry", icon: <HelpCircle size={18} />, tab: 'general' }
+                    { label: "I'm a Customer", icon: <User size={18} />, tab: 'customer' as const },
+                    { label: "I'm a Provider", icon: <Briefcase size={18} />, tab: 'provider' as const },
+                    { label: "I'm a Company", icon: <Building2 size={18} />, tab: 'company' as const },
+                    { label: "General Inquiry", icon: <HelpCircle size={18} />, tab: 'general' as const }
                 ].map((btn, i) => (
                     <m.button
                         key={i}
@@ -190,14 +189,14 @@ const OfficeLocation = () => (
                     <h2 className="text-4xl font-extrabold">Visit Us</h2>
                     <div className="space-y-8">
                         <div className="flex gap-6">
-                            <div className="w-12 h-12 bg-[#006D77]/10 text-[#006D77] rounded-xl flex items-center justify-center flex-shrink-0"><Clock /></div>
+                            <div className="w-12 h-12 bg-[#006D77]/10 text-[#006D77] rounded-xl flex items-center justify-center shrink-0"><Clock /></div>
                             <div>
                                 <h4 className="font-bold text-lg">Main Office</h4>
                                 <p className="text-gray-400">123 Tech Avenue, Innovation Quarter<br />London, EC1A 1BB, United Kingdom</p>
                             </div>
                         </div>
                         <div className="flex gap-6">
-                            <div className="w-12 h-12 bg-[#006D77]/10 text-[#006D77] rounded-xl flex items-center justify-center flex-shrink-0"><Clock /></div>
+                            <div className="w-12 h-12 bg-[#006D77]/10 text-[#006D77] rounded-xl flex items-center justify-center shrink-0"><Clock /></div>
                             <div>
                                 <h4 className="font-bold text-lg">Operating Hours</h4>
                                 <p className="text-gray-400">Monday - Friday: 09:00 - 18:00 GMT<br />Saturday: 10:00 - 16:00 GMT</p>
@@ -232,6 +231,7 @@ const AdditionalResources = () => (
                     <div key={i} className="p-10 rounded-[3rem] bg-gray-50 border border-gray-100 hover:bg-white hover:shadow-2xl transition-all relative overflow-hidden group">
                         {res.badge && <div className="absolute top-6 right-6 bg-gray-200 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase">{res.badge}</div>}
                         <div className="w-16 h-16 bg-[#006D77]/10 text-[#006D77] rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {React.cloneElement(res.icon as React.ReactElement, { size: 32 } as any)}
                         </div>
                         <h4 className="text-2xl font-bold mb-4">{res.title}</h4>
@@ -253,7 +253,7 @@ const BusinessInquiries = () => (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
                 <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-all">
                     <h4 className="font-bold text-xl mb-4 flex items-center gap-3">Partnerships <CheckCircle2 size={20} className="text-[#006D77]" /></h4>
-                    <p className="text-white/60 text-sm mb-6 leading-relaxed">Interested in a strategic collaboration with Nasgo? We're looking for partners who share our vision.</p>
+                    <p className="text-white/60 text-sm mb-6 leading-relaxed">Interested in a strategic collaboration with Nasgo? We&apos;re looking for partners who share our vision.</p>
                     <div className="font-bold text-[#006D77]">partnerships@nasgo.uk</div>
                 </div>
                 <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-all">
@@ -263,7 +263,7 @@ const BusinessInquiries = () => (
                 </div>
                 <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-all">
                     <h4 className="font-bold text-xl mb-4 flex items-center gap-3">Careers <Linkedin size={20} className="text-blue-400" /></h4>
-                    <p className="text-white/60 text-sm mb-6 leading-relaxed">We're always looking for talented engineers and designers to join our growing global team.</p>
+                    <p className="text-white/60 text-sm mb-6 leading-relaxed">We&apos;re always looking for talented engineers and designers to join our growing global team.</p>
                     <button className="font-bold text-white border-b-2 border-white/20 hover:border-white">View Open Positions</button>
                 </div>
                 <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-all">

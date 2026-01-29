@@ -112,7 +112,7 @@ const TermsPage: React.FC = () => {
                                     Nasgo is a <span className="text-white font-bold italic">marketplace platform</span>. We connect users but do not provide home services directly. We do not employ providers and are not responsible for their performance.
                                 </p>
                                 <div className="p-6 bg-white/5 border border-white/10 rounded-2xl italic text-xs text-white/40">
-                                    "Service contracts are strictly between the Customer and the Provider."
+                                    &quot;Service contracts are strictly between the Customer and the Provider.&quot;
                                 </div>
                             </div>
                         </section>
@@ -135,7 +135,7 @@ const TermsPage: React.FC = () => {
                         <section id="liability" className="scroll-mt-32">
                             <h2 className="text-3xl font-extrabold text-[#264653] mb-8">7. Limitation of Liability</h2>
                             <p className="text-gray-400 text-sm leading-relaxed font-bold bg-white p-8 rounded-[3rem] border border-gray-100 shadow-sm uppercase italic">
-                                Nasgo is provided "AS IS". To the maximum extent permitted by law, Nasgo shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the platform or services provided by third-party professionals.
+                                Nasgo is provided &quot;AS IS&quot;. To the maximum extent permitted by law, Nasgo shall not be liable for any direct, indirect, incidental, or consequential damages arising from your use of the platform or services provided by third-party professionals.
                             </p>
                         </section>
 

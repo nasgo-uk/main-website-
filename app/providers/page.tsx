@@ -8,18 +8,12 @@ import {
     Check,
     ChevronDown,
     Clock,
-    CreditCard,
-    DollarSign,
     Layout,
-    Lock,
     MessageSquare,
-    Monitor,
-    ShieldCheck,
     Star,
     TrendingUp,
     UserCheck,
     Zap,
-    ArrowRight,
     Smartphone as SmartphoneIcon,
     FileText,
     Shield,
@@ -27,7 +21,6 @@ import {
     User,
     XCircle,
     Award,
-    Gift,
     Headset,
     Trophy,
     Settings,
@@ -84,8 +77,8 @@ const ProvidersHero = () => {
                         transition={{ duration: 5 + i, repeat: Infinity, delay: i }}
                         className="absolute text-white/10"
                         style={{
-                            top: `${Math.random() * 80}%`,
-                            left: `${Math.random() * 90}%`
+                            top: `${(i * 20) % 80}%`,
+                            left: `${(i * 30) % 90}%`
                         }}
                     >
                         <Banknote size={48 + i * 20} />
@@ -113,7 +106,7 @@ const ProvidersHero = () => {
                     </h1>
 
                     <p className="text-xl text-white/80 mb-10 max-w-lg leading-relaxed">
-                        Join Nasgo's network of verified professionals. Receive job requests instantly, set your own rates, and get paid weekly. No middleman, no hassle.
+                        Join Nasgo&apos;s network of verified professionals. Receive job requests instantly, set your own rates, and get paid weekly. No middleman, no hassle.
                     </p>
 
                     <div className="grid grid-cols-2 gap-8 mb-12 max-w-md">
@@ -154,7 +147,7 @@ const ProvidersHero = () => {
                     transition={{ duration: 1, delay: 0.2 }}
                     className="relative flex justify-center"
                 >
-                    <div className="relative w-full max-w-[320px] aspect-[10/19]">
+                    <div className="relative w-full max-w-[320px] aspect-10/19">
                         <div
                             className="absolute inset-0 bg-[#2b2b2b] rounded-[3rem] p-[8px] shadow-2xl overflow-hidden z-10 border-[6px] border-[#4a4a4a] ring-1 ring-black/50"
                         >
@@ -200,7 +193,7 @@ const ProvidersHero = () => {
                                 <div className="flex-1 overflow-y-auto px-6 pb-8 no-scrollbar space-y-6">
 
                                     {/* Status Card */}
-                                    <div className="bg-[#0B1120] rounded-[2rem] border border-[#00df9a] p-1 relative overflow-hidden">
+                                    <div className="bg-[#0B1120] rounded-4xl border border-[#00df9a] p-1 relative overflow-hidden">
                                         <div className="bg-[#00df9a]/10 rounded-[1.8rem] p-5 flex justify-between items-center">
                                             <div>
                                                 <div className="text-[10px] font-bold text-[#00df9a] tracking-wider mb-1">SYSTEM ONLINE</div>
@@ -216,7 +209,7 @@ const ProvidersHero = () => {
                                     <div className="bg-[#1e293b] rounded-[2.5rem] p-6">
                                         <div className="flex items-center gap-2 mb-4">
                                             <div className="w-2 h-2 rounded-full bg-[#00df9a]"></div>
-                                            <span className="text-xs font-bold text-gray-400 tracking-wide">TODAY'S EARNINGS</span>
+                                            <span className="text-xs font-bold text-gray-400 tracking-wide">TODAY&apos;S EARNINGS</span>
                                         </div>
                                         <div className="flex justify-between items-end mb-8">
                                             <div className="text-5xl font-bold tracking-tight">£190.0</div>
@@ -256,10 +249,10 @@ const ProvidersHero = () => {
                                     {/* Today's Jobs */}
                                     <div>
                                         <div className="flex items-center justify-between mb-4">
-                                            <div className="font-bold text-lg">Today's Jobs</div>
+                                            <div className="font-bold text-lg">Today&apos;s Jobs</div>
                                             <span className="px-3 py-1 bg-[#264653] rounded-full text-[10px] text-gray-300">2 Pending</span>
                                         </div>
-                                        <div className="bg-[#1e293b] rounded-[2rem] overflow-hidden">
+                                        <div className="bg-[#1e293b] rounded-4xl overflow-hidden">
                                             <div className="p-4 flex justify-between items-center">
                                                 <div className="flex items-center gap-3">
                                                     <div className="w-10 h-10 rounded-xl bg-[#00df9a]/10 flex items-center justify-center">
@@ -271,7 +264,7 @@ const ProvidersHero = () => {
                                             </div>
                                             <div className="h-32 bg-[#334155] relative flex items-center justify-center">
                                                 {/* Mock Map */}
-                                                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-500 to-[#1e293b]"></div>
+                                                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-gray-500 to-[#1e293b]"></div>
                                                 <div className="w-20 h-20 rounded-full bg-[#00df9a]/20 flex items-center justify-center animate-pulse z-10">
                                                     <MapPin size={32} className="text-[#00df9a] fill-[#00df9a]/20" />
                                                 </div>
@@ -309,7 +302,7 @@ const EarningsCalculator = () => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-extrabold mb-6">How Much Can You Earn?</h2>
-                    <p className="text-xl text-gray-500">Calculate your potential income with Nasgo's 10% platform fee.</p>
+                    <p className="text-xl text-gray-500">Calculate your potential income with Nasgo&apos;s 10% platform fee.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -397,6 +390,7 @@ const ProviderBenefits = () => {
                             className="p-10 bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100"
                         >
                             <div className="w-16 h-16 bg-[#006D77]/10 text-[#006D77] rounded-2xl flex items-center justify-center mb-8">
+                                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                 {React.cloneElement(b.icon as React.ReactElement, { size: 32 } as any)}
                             </div>
                             <h3 className="text-2xl font-bold mb-4">{b.title}</h3>
@@ -461,7 +455,7 @@ const ProviderJourney = () => {
                                 viewport={{ once: true }}
                                 className="lg:w-1/2 w-full flex justify-center"
                             >
-                                <div className="w-full max-w-[300px] aspect-[9/18] bg-white/5 rounded-[3rem] border border-white/10 p-4 flex items-center justify-center text-white/30 font-bold uppercase tracking-widest overflow-hidden relative shadow-2xl">
+                                <div className="w-full max-w-[300px] aspect-9/18 bg-white/5 rounded-[3rem] border border-white/10 p-4 flex items-center justify-center text-white/30 font-bold uppercase tracking-widest overflow-hidden relative shadow-2xl">
                                     <div className="absolute inset-3 bg-[#0f172a] rounded-[2.5rem] flex flex-col pt-10 px-4 pb-4 overflow-hidden">
                                         {/* Phone Top Bar */}
                                         <div className="absolute top-4 left-1/2 -translate-x-1/2 w-20 h-5 bg-black rounded-full z-10" />
@@ -537,7 +531,7 @@ const PricingTransparency = () => (
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 mt-16 pt-16 border-t border-gray-200">
                     <div className="space-y-4">
-                        <h4 className="font-bold text-lg mb-6">What's Included</h4>
+                        <h4 className="font-bold text-lg mb-6">What&apos;s Included</h4>
                         {[
                             "Secure Payment Processing", "Customer Matching AI", "In-app Chat & Calls",
                             "Dispute Resolution", "Marketing to Thousands", "24/7 Provider Support"
@@ -594,7 +588,8 @@ const RequirementsSection = () => {
                                 transition={{ delay: i * 0.05 }}
                                 className="flex gap-4 p-4 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
                             >
-                                <div className="w-12 h-12 bg-[#006D77]/5 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div className="w-12 h-12 bg-[#006D77]/5 rounded-xl flex items-center justify-center shrink-0">
+                                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                                     {React.cloneElement(req.icon as React.ReactElement, { size: 24 } as any)}
                                 </div>
                                 <div>
@@ -684,6 +679,7 @@ const FoundingBenefits = () => (
                 ].map((b, i) => (
                     <div key={i} className="p-8 bg-white/10 rounded-3xl border border-white/10">
                         <div className="text-[#E76F51] mb-4 flex justify-center">
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                             {React.cloneElement(b.i as React.ReactElement, { size: 32 } as any)}
                         </div>
                         <h4 className="font-bold mb-2">{b.t}</h4>

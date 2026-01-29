@@ -39,7 +39,7 @@ const ProblemSolution: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-500 max-w-2xl mx-auto"
           >
-            Home services shouldn't be a gamble. We built Nasgo to bring intelligence,
+            Home services shouldn&apos;t be a gamble. We built Nasgo to bring intelligence,
             fairness, and transparency to every doorstep.
           </m.p>
         </div>
