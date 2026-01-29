@@ -33,27 +33,5 @@ export const locationsData: Location[] = [
             'Jewellery Quarter',
             'Digbeth'
         ]
-    },
-    {
-        id: 'london',
-        name: 'London',
-        description: 'Comprehensive home services across Greater London. Verified professionals available for same-day bookings.',
-        coordinates: {
-            lat: 51.5074,
-            lng: 0.1278
-        },
-        metaDescription: 'Book verified home service professionals in London. Cleaning, Handyman, Gardening and more. Fast AI quotes and reliable service across the capital.',
-        areas: [
-            'Camden',
-            'Greenwich',
-            'Hackney',
-            'Hammersmith',
-            'Islington',
-            'Kensington',
-            'Lambeth',
-            'Southwark',
-            'Westminster',
-            'Wandsworth'
-        ]
     }
 ];
