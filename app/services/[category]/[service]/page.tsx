@@ -192,7 +192,7 @@ export default async function ServicePage({ params }: Props) {
                                         </div>
                                     </div>
 
-                                    <Link href="/contact" className="block w-full bg-[#E76F51] hover:bg-[#d05a3d] text-white font-bold py-4 rounded-xl text-center transition-colors shadow-lg hover:shadow-orange-500/30 mb-4">
+                                    <Link href={`/services/${category.id}/${service.id}/quote`} className="block w-full bg-[#E76F51] hover:bg-[#d05a3d] text-white font-bold py-4 rounded-xl text-center transition-colors shadow-lg hover:shadow-orange-500/30 mb-4">
                                         Get Instant Quote
                                     </Link>
 
